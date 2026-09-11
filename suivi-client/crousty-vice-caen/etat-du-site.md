@@ -5,8 +5,12 @@
 et sur l'univers Vice City** : ciel dégradé coucher de soleil (nuit violette → magenta →
 orange), soleil à bandes horizontales, rayons de soleil (sunburst) en rotation lente, étoiles,
 grille en perspective, scanlines, skyline
-Art déco et palmiers en silhouette. Titres au traitement du logo (`ChromeTitle` / `ScriptTitle`, police Titan One inclinée) : dégradé blanc → rose, double contour encre + magenta, fioriture sous le mot
-manuscrit. Panneaux jaune citron et menthe et stickers de prix pour la carte.
+Art déco et palmiers en silhouette. Titres en Titan One. Panneaux jaune citron et menthe et stickers de prix pour la carte.
+
+> Le hero a fait l'objet d'une série d'essais visant à reproduire exactement le lettrage du
+> logo (contours empilés, extrusion 3D, reflet spéculaire, découpe lettre par lettre). À la
+> demande du client, il est revenu à sa version simple et lisible. La technique reste
+> disponible dans `lockup-vice-city.html` et dans l'historique Git, si le sujet revient.
 **Stack** : Next.js 16 (App Router) · Tailwind v4 · TypeScript · Leaflet/OpenStreetMap.
 
 ---
