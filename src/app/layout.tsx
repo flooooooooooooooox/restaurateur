@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Outfit, Inter, Luckiest_Guy, Pacifico } from "next/font/google";
+import { Outfit, Inter, Titan_One, Pacifico } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -15,8 +15,8 @@ const display = Outfit({
   display: "swap",
 });
 
-// Titres graffiti des affiches du restaurant
-const graffiti = Luckiest_Guy({
+// Titres du logo : bold arrondi, proche des lettres de « CROUSTY VICE »
+const graffiti = Titan_One({
   variable: "--font-graffiti",
   subsets: ["latin"],
   weight: "400",

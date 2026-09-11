@@ -604,7 +604,7 @@ body {
 /* Titre chromé : dégradé clair du haut vers le rose, contour et lueur néon */
 .graffiti-chrome {
   -webkit-text-stroke: 0;
-  background: linear-gradient(to bottom, #ffffff 0%, #ffffff 34%, #ffd3ec 50%, #ff8ccb 66%, #ff4fa8 84%, #ee2489 100%);
+  background: linear-gradient(to bottom, #ffd9f0 0%, #ffffff 16%, #ffffff 44%, #ffc2e6 56%, #ff77c2 74%, #f8399b 90%, #e01a80 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -624,6 +624,8 @@ body {
   position: relative;
   display: inline-block;
   letter-spacing: 0.145em;
+  /* Le logo est en lettres penchées : on incline l'ensemble du lockup. */
+  transform: skewX(-9deg);
   filter: drop-shadow(0 0.06em 0 #c0135f) drop-shadow(0 0.1em 0.06em rgba(70, 5, 48, 0.45));
   /* `.graffiti` pose un contour sombre qui, hérité, viendrait se glisser
      entre l'anneau blanc et le remplissage. Chaque couche pose le sien. */
@@ -671,7 +673,6 @@ body {
   font-weight: 400;
   line-height: 1.1;
   display: inline-block;
-  transform: rotate(-2deg);
 }
 
 .script-swash {
@@ -682,4 +683,10 @@ body {
   width: 108%;
   height: 0.34em;
   filter: drop-shadow(0 0.05em 0 #c0135f);
+}
+
+/* Le mot manuscrit penche déjà par construction : on réduit l'inclinaison
+   ajoutée, sinon il devient illisible. */
+.script-wrap .chrome-wrap {
+  transform: skewX(-4deg);
 }

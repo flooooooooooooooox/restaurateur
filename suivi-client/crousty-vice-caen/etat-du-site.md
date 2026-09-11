@@ -4,8 +4,7 @@
 **Variante de design** : V21 « Vice Néon », **reprise sur la direction artistique des affiches
 et sur l'univers Vice City** : ciel dégradé coucher de soleil (nuit violette → magenta →
 orange), soleil à bandes horizontales, étoiles, grille en perspective, scanlines, skyline
-Art déco et palmiers en silhouette. Titres au traitement du logo (`ChromeTitle` /
-`ScriptTitle`) : dégradé blanc → rose, double contour encre + magenta, fioriture sous le mot
+Art déco et palmiers en silhouette. Titres au traitement du logo (`ChromeTitle` / `ScriptTitle`, police Titan One inclinée) : dégradé blanc → rose, double contour encre + magenta, fioriture sous le mot
 manuscrit. Panneaux jaune citron et menthe et stickers de prix pour la carte.
 **Stack** : Next.js 16 (App Router) · Tailwind v4 · TypeScript · Leaflet/OpenStreetMap.
 
@@ -97,7 +96,15 @@ Ces champs sont en `[à compléter]`, visibles en surbrillance sur `/mentions-le
   Il suffira de remplacer les fichiers et de corriger `w`/`h` dans `src/lib/site-data.ts`.
 
   Manquent encore : la box de riz en gros plan (le visuel signature), les 2 affiches de la
-  carte (tableau `posters`, prêt), et **le logo**. Les 12 URLs de l'ancien site sont dans
+  carte (tableau `posters`, prêt), et **le logo en fichier**.
+
+  ⚠️ **Le logo est reconstitué en CSS**, pas importé : `ChromeTitle` / `ScriptTitle`
+  reproduisent sa construction (anneau blanc, liseré magenta, remplissage dégradé, relief)
+  avec les polices Titan One et Pacifico. C'est très proche, mais ce ne sera jamais
+  identique : le vrai logo est un lettrage dessiné à la main, pas une police. **Dès que le
+  client fournit le fichier du logo (PNG à fond transparent ou SVG), l'utiliser tel quel**
+  dans `src/components/Logo.tsx` et dans le hero — c'est la seule façon d'obtenir le
+  rendu exact de la marque. Les 12 URLs de l'ancien site sont dans
   `images-a-recuperer.txt`.
 
 ## 🟡 À faire confirmer par le client
