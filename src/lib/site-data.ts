@@ -216,6 +216,9 @@ export const sauces = [
 export type Photo = {
   src: string;
   alt: string;
+  /** Dimensions réelles du fichier (évite le décalage de mise en page). */
+  w: number;
+  h: number;
   /** Occupe deux colonnes dans la galerie. */
   wide?: boolean;
   /** Format portrait (plus haut que large). */
@@ -231,11 +234,12 @@ export type Photo = {
  * dès l'arrivée sur le site. Tant qu'elle est absente, le hero reste
  * en pleine largeur sans emplacement vide.
  */
-export const heroPhoto: Photo | null = null;
-// export const heroPhoto: Photo | null = {
-//   src: "/images/crousty-plat.webp",
-//   alt: "Box Crousty Vice : riz blanc, poulet croustillant, oignons frits et sauce",
-// };
+export const heroPhoto: Photo | null = {
+  src: "/images/crousty-main.webp",
+  alt: "Une box Crousty Vice fraîchement préparée, tenue à la main : poulet croustillant, sauce et herbes sur un lit de riz",
+  w: 228,
+  h: 403,
+};
 
 /**
  * Galerie photo, volontairement désalignée : tailles, inclinaisons et décalages
@@ -246,10 +250,21 @@ export const heroPhoto: Photo | null = null;
  * Formats conseillés : WebP, 1600 px de large max, moins de 300 Ko.
  */
 export const gallery: Photo[] = [
-  // { src: "/images/salle-bornes.webp", alt: "La salle de Crousty Vice : murs roses, néons et borne de commande", tall: true, tilt: -1.5 },
-  // { src: "/images/frigo-boissons.webp", alt: "Le réfrigérateur à boissons de Crousty Vice", tilt: 2, offset: 28 },
-  // { src: "/images/crousty-main.webp", alt: "Une box Crousty Vice servie à emporter, tenue à la main", tilt: -2 },
-  // { src: "/images/salle-ecran.webp", alt: "Écrans et enseigne Crousty Vice dans la salle", wide: true, tilt: 1, offset: 16 },
+  {
+    src: "/images/salle-bornes.webp",
+    alt: "La salle de Crousty Vice : murs roses, néons et borne de commande tactile",
+    w: 473,
+    h: 521,
+    tilt: -1.5,
+  },
+  {
+    src: "/images/frigo-boissons.webp",
+    alt: "Le réfrigérateur à boissons de Crousty Vice, sodas et jus alignés sous les néons",
+    w: 228,
+    h: 188,
+    tilt: 2,
+    offset: 26,
+  },
 ];
 
 /** Affiches de la carte (visuels fournis par le restaurant). */

@@ -60,17 +60,21 @@ export default function Hero() {
         </div>
 
         {heroPhoto && (
-          <div className="animate-hero-in relative" style={{ animationDelay: "0.34s" }}>
-            <div aria-hidden="true" className="animate-soft-float absolute -inset-4 rounded-[2rem] bg-lemon/25 blur-2xl" />
-            <figure className="card-sticker animate-soft-float relative overflow-hidden rotate-[-2deg] bg-navy-light">
+          <div className="animate-hero-in relative mx-auto w-full max-w-[340px]" style={{ animationDelay: "0.34s" }}>
+            <div aria-hidden="true" className="animate-soft-float absolute -inset-5 rounded-[2.5rem] bg-lemon/30 blur-2xl" />
+            {/* Étiquette « polaroid » qui casse le cadre */}
+            <span className="price-sticker price-sticker-mint absolute -left-4 -top-4 z-10 text-sm sm:-left-6">
+              Ton Crousty
+            </span>
+            <figure className="card-sticker animate-soft-float relative overflow-hidden rotate-[-2.5deg] bg-navy-light">
               <Image
                 src={heroPhoto.src}
                 alt={heroPhoto.alt}
-                width={1200}
-                height={900}
+                width={heroPhoto.w}
+                height={heroPhoto.h}
                 priority
-                sizes="(max-width: 1024px) 100vw, 46vw"
-                className="aspect-[4/3] w-full object-cover"
+                sizes="340px"
+                className="w-full object-cover"
               />
             </figure>
           </div>

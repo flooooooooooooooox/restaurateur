@@ -21,7 +21,7 @@ export default function Gallery() {
           intro="Néons roses, bornes de commande et box généreuses : bienvenue chez Crousty Vice."
         />
 
-        <div className="mt-14 grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-3">
+        <div className="mx-auto mt-14 grid max-w-3xl grid-cols-2 items-start gap-5 sm:gap-7">
           {gallery.map((photo, i) => (
             <Reveal
               key={photo.src}
@@ -38,16 +38,14 @@ export default function Gallery() {
                 <Image
                   src={photo.src}
                   alt={photo.alt}
-                  width={photo.wide ? 1600 : 900}
-                  height={photo.tall ? 1350 : photo.wide ? 900 : 900}
+                  width={photo.w}
+                  height={photo.h}
                   sizes={
                     photo.wide
-                      ? "(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 66vw"
-                      : "(max-width: 640px) 50vw, 33vw"
+                      ? "(max-width: 1024px) 100vw, 640px"
+                      : "(max-width: 640px) 50vw, 320px"
                   }
-                  className={`w-full object-cover ${
-                    photo.tall ? "aspect-[3/4]" : photo.wide ? "aspect-[16/9]" : "aspect-square"
-                  }`}
+                  className="w-full object-cover"
                 />
               </figure>
             </Reveal>
