@@ -604,7 +604,7 @@ body {
 /* Titre chromé : dégradé clair du haut vers le rose, contour et lueur néon */
 .graffiti-chrome {
   -webkit-text-stroke: 0;
-  background: linear-gradient(to bottom, #ffd9f0 0%, #ffffff 16%, #ffffff 44%, #ffc2e6 56%, #ff77c2 74%, #f8399b 90%, #e01a80 100%);
+  background: linear-gradient(to bottom, #ffd0ea 0%, #ffffff 14%, #ffffff 38%, #ffb8e0 50%, #ff63b6 68%, #ee2189 86%, #cf0f72 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -625,8 +625,8 @@ body {
   display: inline-block;
   letter-spacing: 0.145em;
   /* Le logo est en lettres penchées : on incline l'ensemble du lockup. */
-  transform: skewX(-9deg);
-  filter: drop-shadow(0 0.06em 0 #c0135f) drop-shadow(0 0.1em 0.06em rgba(70, 5, 48, 0.45));
+  transform: skewX(-9deg) scaleX(0.94);
+  filter: drop-shadow(0.022em 0.065em 0 #b30f59) drop-shadow(0.03em 0.11em 0.05em rgba(70, 5, 48, 0.5));
   /* `.graffiti` pose un contour sombre qui, hérité, viendrait se glisser
      entre l'anneau blanc et le remplissage. Chaque couche pose le sien. */
   -webkit-text-stroke: 0;
@@ -640,11 +640,11 @@ body {
 }
 
 .chrome-stroke-plum {
-  -webkit-text-stroke: 0.425em #a50d57;
+  -webkit-text-stroke: 0.44em #9c0a52;
 }
 
 .chrome-stroke-white {
-  -webkit-text-stroke: 0.335em #ffffff;
+  -webkit-text-stroke: 0.355em #ffffff;
 }
 
 /* Plus de liseré magenta entre le blanc et la lettre : sur le logo, le
