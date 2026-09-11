@@ -9,6 +9,8 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import LocationSection from "@/components/LocationSection";
 import FaqSection from "@/components/FaqSection";
 import CtaSection from "@/components/CtaSection";
+import BuilderSection from "@/components/BuilderSection";
+import Gallery from "@/components/Gallery";
 import JsonLd from "@/components/JsonLd";
 import Reveal from "@/components/Reveal";
 import Link from "next/link";
@@ -44,6 +46,7 @@ export default function HomePage() {
       </section>
 
       <ProcessSection />
+      <BuilderSection />
 
       {/* Aperçu de la carte */}
       <section className="py-20">
@@ -51,7 +54,7 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="La carte"
             title={<>Créez votre <span className="text-gradient">Crousty</span></>}
-            intro="Une base de riz, votre sauce signature et les garnitures que vous voulez. Les prix parlent d'eux-mêmes."
+            intro="Une base de riz, ta sauce signature et les garnitures que tu veux. Les prix parlent d'eux-mêmes."
             sparkle
           />
           <div className="mt-14">
@@ -68,7 +71,7 @@ export default function HomePage() {
                 </h3>
               </div>
               <p className="max-w-sm text-sm text-cream/55">
-                Incluses dans chaque Crousty. Du plus doux au plus relevé&nbsp;: les flammes vous guident.
+                Du plus doux au plus relevé&nbsp;: les flammes te guident.
               </p>
             </div>
             <div className="mt-8">
@@ -86,6 +89,7 @@ export default function HomePage() {
         </div>
       </section>
 
+      <Gallery />
       <BenefitsSection />
       <TestimonialsSection />
       <LocationSection />

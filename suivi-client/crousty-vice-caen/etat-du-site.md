@@ -1,7 +1,9 @@
 # Crousty Vice Caen — état du site
 
 **Statut** : 🟡 construit, **NON publiable en l'état** (informations légales manquantes).
-**Variante de design** : V21 « Vice Néon » (sur-mesure, thème sombre néon — marquée `🔒 utilisée`).
+**Variante de design** : V21 « Vice Néon », **reprise sur la direction artistique des affiches
+du restaurant** : rose dominant, titres graffiti cernés (Luckiest Guy), accents manuscrits
+(Pacifico), panneaux jaune citron et menthe, stickers de prix, skyline et palmiers en silhouette.
 **Stack** : Next.js 16 (App Router) · Tailwind v4 · TypeScript · Leaflet/OpenStreetMap.
 
 ---
@@ -12,7 +14,10 @@
 Politique de confidentialité, 404 personnalisée.
 
 **Sections retenues** (choix du client) :
-- Menu design + configurateur en 3 étapes
+- **Carte interactive « Compose ton Crousty »** : formule, viandes, sauce, toppings, sides
+  et desserts, avec total calculé en direct (`CroustyBuilder.tsx`)
+- Menu design en panneaux jaune/menthe façon affiche, stickers de prix
+- **Sauces dessinées en pots** (`SauceCup.tsx`), pas de pastilles de couleur
 - Carte des sauces synthétique (7 sauces, pastilles de couleur + intensité)
 - Témoignages clients
 - Carte OpenStreetMap + accès (tram / à pied / voiture)
@@ -22,7 +27,9 @@ Politique de confidentialité, 404 personnalisée.
 **Contact** : téléphone seul, click-to-call partout. Pas de formulaire, donc
 **aucune clé API à gérer** et aucune donnée personnelle collectée.
 
-**Prix** : repris **à l'identique** du site Google Sites d'origine.
+**Prix** : repris des **affiches en restaurant** (plus récentes et plus complètes que
+l'ancien site). Les tailles S et M réconcilient les deux affiches : 5,90/6,90 € = S,
+7,90/8,90 € = M. Cela résout au passage l'incohérence 4,90 € vs 5,90 € de l'ancien site.
 
 **SEO** : titres et canonicals uniques par page, sitemap, OpenGraph, favicon,
 `noindex` sur les pages légales, mots-clés locaux (« restaurant Caen », « rue Saint-Jean »…),
@@ -61,13 +68,35 @@ Ces champs sont en `[à compléter]`, visibles en surbrillance sur `/mentions-le
   (sinon canonicals, sitemap et GEO pointent dans le vide).
 - **Logo** : le logo actuel est un logo texte provisoire (`src/components/Logo.tsx` + `src/app/icon.tsx`).
   À remplacer par le vrai logo Vice City du client.
-- **Photos** : aucune image du restaurant n'a pu être récupérée (le proxy réseau bloquait
-  `lh3.googleusercontent.com`). Les 12 URLs sont dans `images-a-recuperer.txt`.
-  Le site fonctionne sans, mais gagnera beaucoup avec de vraies photos.
+- **Photos** : toujours absentes. Les emplacements sont **déjà câblés** — il suffit de déposer
+  les fichiers dans `public/images/` et de décommenter les entrées `gallery` et `posters`
+  dans `src/lib/site-data.ts` ; les sections apparaissent toutes seules (voir
+  `public/images/README.md`). Les 12 URLs de l'ancien site sont dans `images-a-recuperer.txt`.
 
 ## 🟡 À faire confirmer par le client
-- **Incohérence de prix héritée du site d'origine** : « La Base — Riz blanc parfumé 5,90 € »
-  alors que « Crousty seul taille S » est à 4,90 €. Repris tel quel, à trancher.
+
+### Prix relevés sur les affiches — à valider ligne à ligne
+Certains chiffres des affiches sont peu lisibles. Voici ce qui est actuellement en ligne :
+
+| Ligne | Prix retenu | Confiance |
+|---|---|---|
+| Crousty seul S / M | 5,90 € / 7,90 € | bonne |
+| Crousty en menu S / M | 6,90 € / 8,90 € | bonne |
+| Menu + Gratinage | 9,40 € | bonne |
+| Viandes (tenders, spicy, cordon bleu, camembert, nuggets) | 2,00 € pièce | bonne |
+| Jalapeños / Gratinage | 0,50 € / 1,50 € | bonne |
+| Onion Rings x15 · Camembert x4 · Tenders x2 · Spicy Tenders x2 · Nuggets x4 | 2,90 € | **à vérifier** |
+| Cordon Bleu x1 | 2,00 € | **à vérifier** |
+| Boisson au choix | 1,50 € | bonne |
+| Tiramisu / Cheesecake / Tarte au Daim | 3,50 € / 3,90 € / 3,90 € | bonne |
+
+### 🔴 Prix des sauces — non tranché
+L'affiche porte un badge « 2 € » à droite de la ligne VIANDES **et** un autre à droite de
+la ligne SAUCES. Impossible de savoir si les sauces sont payantes.
+
+**Décision prise en attendant** : les sauces sont affichées **sans prix** (comme sur l'ancien
+site) et ne sont pas comptées dans le total du configurateur, qui le mentionne explicitement.
+Rien n'est inventé. À trancher avant publication.
 - **Année de création** (`foundingYear`) — renforce le référencement et les citations IA.
 - **Allergènes** : actuellement « disponibles sur demande ». Les publier serait un plus.
 - **Fiche Google Business** : le plus gros levier restant pour être trouvé et cité.

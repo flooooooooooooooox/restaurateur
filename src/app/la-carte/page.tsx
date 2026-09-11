@@ -3,6 +3,8 @@ import MenuBoard from "@/components/MenuBoard";
 import SauceBoard from "@/components/SauceBoard";
 import SectionHeading from "@/components/SectionHeading";
 import CtaSection from "@/components/CtaSection";
+import BuilderSection from "@/components/BuilderSection";
+import PosterStrip from "@/components/PosterStrip";
 import JsonLd from "@/components/JsonLd";
 import { siteConfig } from "@/lib/site-data";
 import { getBreadcrumbSchema } from "@/lib/structured-data";
@@ -33,8 +35,8 @@ export default function MenuPage() {
             La carte de <span className="neon-pink">Crousty Vice</span> à {siteConfig.city}
           </h1>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-cream/70">
-            Chaque Crousty commence par une base de riz blanc parfumé, suivi de notre sauce
-            signature et de vos garnitures préférées. Tous les prix sont en euros, TTC.
+            Chaque Crousty commence par une base de riz blanc parfumé, suivi de ta sauce
+            signature et des garnitures que tu veux. Tous les prix sont en euros, TTC.
           </p>
         </div>
       </section>
@@ -51,7 +53,7 @@ export default function MenuPage() {
           <SectionHeading
             eyebrow="Les sauces signature"
             title="Sept sauces, une signature"
-            intro="Incluses dans chaque Crousty. Du plus doux au plus relevé : les flammes indiquent l'intensité."
+            intro="Une signature par Crousty. Du plus doux au plus relevé : les flammes indiquent l'intensité."
           />
           <div className="mt-12">
             <SauceBoard />
@@ -59,6 +61,8 @@ export default function MenuPage() {
         </div>
       </section>
 
+      <BuilderSection />
+      <PosterStrip />
       <CtaSection />
     </>
   );

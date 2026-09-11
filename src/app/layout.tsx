@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Outfit, Inter } from "next/font/google";
+import { Outfit, Inter, Luckiest_Guy, Pacifico } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -12,6 +12,22 @@ const display = Outfit({
   variable: "--font-display",
   subsets: ["latin"],
   weight: ["600", "700", "800", "900"],
+  display: "swap",
+});
+
+// Titres graffiti des affiches du restaurant
+const graffiti = Luckiest_Guy({
+  variable: "--font-graffiti",
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+});
+
+// Accents manuscrits (« Vice », « ton Crousty »)
+const script = Pacifico({
+  variable: "--font-script",
+  subsets: ["latin"],
+  weight: "400",
   display: "swap",
 });
 
@@ -65,7 +81,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr">
-      <body className={`${display.variable} ${body.variable} font-sans antialiased pb-[68px] md:pb-0`}>
+      <body className={`${display.variable} ${graffiti.variable} ${script.variable} ${body.variable} font-sans antialiased pb-[68px] md:pb-0`}>
         <JsonLd data={[getRestaurantSchema(), getWebSiteSchema()]} />
         <a
           href="#contenu"

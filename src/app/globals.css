@@ -17,6 +17,12 @@
   --color-brand-dark: #d0196e;
   --color-cyan: #22e0ff;
   --color-sun: #ffb23f;
+  /* Couleurs relevées sur les affiches du restaurant */
+  --color-hot: #e5189f;        /* rose dominant des affiches */
+  --color-hot-deep: #8d1668;   /* rose sombre (skyline, ombres) */
+  --color-lemon: #f7e97f;      /* panneaux jaunes */
+  --color-mint: #8ef0dc;       /* stickers menthe */
+  --color-ink: #2a0a24;        /* contour et texte sur fond clair */
 }
 
 @theme inline {
@@ -30,8 +36,15 @@
   --color-brand-dark: var(--color-brand-dark);
   --color-cyan: var(--color-cyan);
   --color-sun: var(--color-sun);
+  --color-hot: var(--color-hot);
+  --color-hot-deep: var(--color-hot-deep);
+  --color-lemon: var(--color-lemon);
+  --color-mint: var(--color-mint);
+  --color-ink: var(--color-ink);
   --font-sans: var(--font-body);
   --font-display: var(--font-display);
+  --font-graffiti: var(--font-graffiti);
+  --font-script: var(--font-script);
 }
 
 html {
@@ -410,4 +423,117 @@ body {
 
 .leaflet-container .leaflet-control-attribution a {
   color: var(--color-cyan) !important;
+}
+
+/* ==================================================================
+   Direction artistique reprise des affiches du restaurant :
+   rose dominant, titres graffiti cernés, stickers de prix, palmiers.
+   ================================================================== */
+
+/* Titre graffiti : gros caps cernés + ombre portée, comme sur les affiches */
+.graffiti {
+  font-family: var(--font-graffiti), var(--font-display), system-ui, sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 0.95;
+  text-transform: uppercase;
+  color: #fff;
+  paint-order: stroke fill;
+  -webkit-text-stroke: 0.14em var(--color-ink);
+  filter: drop-shadow(0 0.055em 0 rgba(42, 10, 36, 0.6));
+}
+
+.graffiti-lemon {
+  color: var(--color-lemon);
+}
+
+.graffiti-mint {
+  color: var(--color-mint);
+}
+
+/* Sous-titre manuscrit (le « ton Crousty » jaune des affiches) */
+.script {
+  font-family: var(--font-script), cursive;
+  font-weight: 400;
+  color: var(--color-lemon);
+  paint-order: stroke fill;
+  -webkit-text-stroke: 0.09em var(--color-ink);
+  filter: drop-shadow(0 0.05em 0 rgba(42, 10, 36, 0.5));
+  transform: rotate(-2deg);
+  display: inline-block;
+}
+
+/* Panneau rose dominant des affiches */
+.panel-hot {
+  background:
+    radial-gradient(ellipse 70% 60% at 20% 0%, #ff4fc0 0%, transparent 60%),
+    linear-gradient(165deg, var(--color-hot) 0%, var(--color-hot-deep) 100%);
+  color: #fff;
+}
+
+/* Panneau jaune / menthe des blocs de prix */
+.panel-lemon {
+  background: var(--color-lemon);
+  color: var(--color-ink);
+}
+
+.panel-mint {
+  background: var(--color-mint);
+  color: var(--color-ink);
+}
+
+/* Sticker de prix : pastille cernée, légèrement inclinée */
+.price-sticker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.28em 0.7em;
+  border-radius: 0.7rem;
+  border: 3px solid var(--color-ink);
+  background: var(--color-lemon);
+  color: var(--color-ink);
+  font-family: var(--font-graffiti), var(--font-display), sans-serif;
+  font-size: 1.05em;
+  line-height: 1.1;
+  white-space: nowrap;
+  box-shadow: 0 4px 0 var(--color-ink);
+  transform: rotate(-3deg);
+}
+
+.price-sticker-mint {
+  background: var(--color-mint);
+}
+
+.price-sticker-hot {
+  background: var(--color-hot);
+  color: #fff;
+}
+
+/* Bordure épaisse « autocollant » des cartes de la carte */
+.card-sticker {
+  border: 3px solid var(--color-ink);
+  border-radius: 1.25rem;
+  box-shadow: 0 6px 0 var(--color-ink);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-sticker:hover,
+.card-sticker:focus-within {
+  transform: translate(-2px, -3px);
+  box-shadow: 0 9px 0 var(--color-ink);
+}
+
+/* Skyline + palmiers en silhouette, en bas des panneaux roses */
+.skyline {
+  background-repeat: repeat-x;
+  background-position: bottom center;
+  background-size: auto 100%;
+  opacity: 0.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-sticker:hover,
+  .card-sticker:focus-within {
+    transform: none;
+  }
 }

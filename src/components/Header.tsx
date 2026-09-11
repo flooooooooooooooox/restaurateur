@@ -28,10 +28,8 @@ export default function Header() {
 
   return (
     <header
-      className={`animate-header-in sticky top-0 z-50 transition-colors duration-300 ${
-        scrolled
-          ? "border-b border-cream/10 bg-navy/85 backdrop-blur-xl"
-          : "border-b border-transparent bg-transparent"
+      className={`animate-header-in sticky top-0 z-50 border-b bg-navy/90 backdrop-blur-xl transition-shadow duration-300 ${
+        scrolled ? "border-cream/10 shadow-[0_10px_30px_-18px_rgba(0,0,0,0.9)]" : "border-cream/5"
       }`}
     >
       <div className="mx-auto flex max-w-6xl items-center gap-4 px-5 py-3.5">

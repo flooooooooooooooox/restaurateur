@@ -34,7 +34,7 @@ export const siteConfig = {
   },
 
   priceRange: "€",
-  priceFrom: "4,90 €",
+  priceFrom: "5,90 €",
   /** Rayon de chalandise (livraison non proposée : c'est la zone d'attractivité) */
   serviceRadiusKm: 15,
   areaServed: [
@@ -76,86 +76,137 @@ export const processSteps = [
     step: "02",
     title: "Ajoutez vos protéines",
     description:
-      "Tenders, tenders spicy, cordon bleu, bouchée camembert ou nuggets : empilez ce qui vous fait envie, croustillant garanti.",
+      "Tenders, spicy tenders, cordon bleu, camembert ou nuggets : 2 € pièce, empilez ce qui vous fait envie.",
   },
   {
     step: "03",
     title: "Signez avec votre sauce",
     description:
-      "Sept sauces signature, du sweet chili doux à l'algérienne. Une dose, deux doses : c'est vous qui décidez.",
+      "Sept sauces signature, du sweet chili doux à l'algérienne. Ajoutez un side, une boisson, un dessert : la partie est complète.",
   },
 ] as const;
 
 /**
- * La carte. Prix strictement identiques à ceux du site d'origine.
- * `price: null` = pas de supplément affiché (inclus dans le Crousty).
+ * La carte, reprise des affiches en restaurant (« Compose ton Crousty »,
+ * « Sides / Boissons / Desserts »). Les tailles S et M réconcilient les deux
+ * affiches : 5,90/6,90 € = taille S, 7,90/8,90 € = taille M.
+ *
+ * ⚠️ Le prix des sauces n'est pas établi : l'affiche laisse un doute et il n'a
+ * pas été confirmé. Elles sont donc présentées SANS prix, comme sur l'ancien
+ * site. Ne rien afficher tant que ce n'est pas tranché (cf. etat-du-site.md).
  */
-export type MenuItem = { name: string; price: number | null; note?: string };
+export type MenuItem = { name: string; price: number | null; note?: string; qty?: string };
 export type MenuCategory = {
   id: string;
   name: string;
   kicker: string;
+  /** Prix unique affiché en sticker quand tous les items sont au même tarif. */
+  flatPrice?: number;
   items: MenuItem[];
 };
 
 export const menu: MenuCategory[] = [
   {
-    id: "base",
-    name: "La Base",
-    kicker: "Le point de départ",
-    items: [{ name: "Riz blanc parfumé", price: 5.9 }],
-  },
-  {
-    id: "toppings",
-    name: "Les Toppings Frais",
-    kicker: "Le petit plus",
+    id: "formules",
+    name: "Les Formules",
+    kicker: "La base",
     items: [
-      { name: "Gratinage", price: 1.5 },
-      { name: "Jalapeños", price: 0.5 },
+      { name: "Crousty seul", price: 5.9, note: "Taille S" },
+      { name: "Crousty seul", price: 7.9, note: "Taille M" },
+      { name: "Crousty en menu", price: 6.9, note: "Taille S" },
+      { name: "Crousty en menu", price: 8.9, note: "Taille M" },
+      { name: "Menu + Gratinage", price: 9.4 },
     ],
   },
   {
-    id: "proteines",
-    name: "Les Protéines",
+    id: "viandes",
+    name: "Les Viandes",
     kicker: "Le croustillant",
+    flatPrice: 2,
     items: [
       { name: "Tenders", price: 2 },
-      { name: "Tenders « Spicy »", price: 2 },
-      { name: "Cordon bleu", price: 2 },
-      { name: "Bouchée Camembert", price: 2 },
+      { name: "Spicy Tenders", price: 2 },
+      { name: "Cordon Bleu", price: 2 },
+      { name: "Camembert", price: 2 },
       { name: "Nuggets", price: 2 },
     ],
   },
   {
-    id: "menus",
-    name: "Menus, Boissons & Desserts",
-    kicker: "La formule complète",
+    id: "toppings",
+    name: "Les Toppings",
+    kicker: "Le petit plus",
     items: [
-      { name: "Crousty seul", price: 4.9, note: "Taille S" },
-      { name: "Crousty seul", price: 7.9, note: "Taille M" },
-      { name: "Menu", price: 5.9, note: "Taille S" },
-      { name: "Menu", price: 8.9, note: "Taille M" },
-      { name: "Menu + Gratinage", price: 9.4 },
-      { name: "Boisson au choix", price: 1.5 },
+      { name: "Jalapeños", price: 0.5 },
+      { name: "Gratinage", price: 1.5 },
+    ],
+  },
+  {
+    id: "sides",
+    name: "Les Sides",
+    kicker: "À partager",
+    items: [
+      { name: "Onion Rings", price: 2.9, qty: "x15" },
+      { name: "Camembert", price: 2.9, qty: "x4" },
+      { name: "Tenders", price: 2.9, qty: "x2" },
+      { name: "Spicy Tenders", price: 2.9, qty: "x2" },
+      { name: "Nuggets", price: 2.9, qty: "x4" },
+      { name: "Cordon Bleu", price: 2, qty: "x1" },
+    ],
+  },
+  {
+    id: "boissons",
+    name: "Les Boissons",
+    kicker: "Au choix",
+    items: [{ name: "Boisson au choix", price: 1.5 }],
+  },
+  {
+    id: "desserts",
+    name: "Les Desserts",
+    kicker: "La fin de partie",
+    items: [
       { name: "Tiramisu", price: 3.5 },
-      { name: "Tarte au Daim / Cheesecake", price: 3.9 },
+      { name: "Cheesecake", price: 3.9 },
+      { name: "Tarte au Daim", price: 3.9 },
     ],
   },
 ];
 
 /**
- * Les 7 sauces signature, présentées en carte visuelle synthétique.
- * `from`/`to` = dégradé de la pastille, `heat` = intensité 0-3.
+ * Les 7 sauces signature, dessinées en pots (composant SauceCup).
+ * `sauce` = couleur de la sauce, `top` = reflet, `heat` = intensité 0-3.
  */
 export const sauces = [
-  { name: "Sweet Chili Doux", tag: "Doux & fruité", from: "#ff7a59", to: "#ff2e88", heat: 1 },
-  { name: "Soja Sucrée", tag: "Sucré-salé", from: "#8b5a2b", to: "#3d2414", heat: 0 },
-  { name: "Algérienne", tag: "Le classique", from: "#ffb23f", to: "#e04b1f", heat: 2 },
-  { name: "Boursin", tag: "Crémeuse", from: "#f6f0ff", to: "#b9a7d8", heat: 0 },
-  { name: "BBQ", tag: "Fumée", from: "#a8321c", to: "#4a140c", heat: 1 },
-  { name: "Biggy", tag: "L'incontournable", from: "#ffd08a", to: "#e8863f", heat: 0 },
-  { name: "Curry", tag: "Épicée", from: "#ffd447", to: "#c07a10", heat: 2 },
+  { name: "Sweet Chili", tag: "Doux & fruité", sauce: "#e8442a", top: "#ff7a4f", heat: 1 },
+  { name: "Soja Sucrée", tag: "Sucré-salé", sauce: "#2a1508", top: "#4a2a12", heat: 0 },
+  { name: "Algérienne", tag: "Le classique", sauce: "#e8913a", top: "#ffb765", heat: 2 },
+  { name: "Boursin", tag: "Crémeuse", sauce: "#f2ece0", top: "#ffffff", heat: 0 },
+  { name: "BBQ", tag: "Fumée", sauce: "#7d1f12", top: "#a8331f", heat: 1 },
+  { name: "Biggy", tag: "L'incontournable", sauce: "#f6c89a", top: "#ffe0c2", heat: 0 },
+  { name: "Curry", tag: "Épicée", sauce: "#e8c02f", top: "#ffdc5e", heat: 2 },
 ] as const;
+
+
+/**
+ * Galerie photo. Déposez les fichiers dans `public/images/` puis décommentez
+ * les entrées correspondantes : la section apparaît automatiquement dès qu'il
+ * y a au moins une image, et reste masquée sinon.
+ *
+ * Formats conseillés : WebP, 1600 px de large max, moins de 300 Ko.
+ */
+export type Photo = { src: string; alt: string; wide?: boolean };
+
+export const gallery: Photo[] = [
+  // { src: "/images/crousty-plat.webp", alt: "Box Crousty Vice : riz, poulet croustillant et sauce", wide: true },
+  // { src: "/images/salle-bornes.webp", alt: "La salle de Crousty Vice et ses bornes de commande, murs roses et néons" },
+  // { src: "/images/frigo-boissons.webp", alt: "Le réfrigérateur à boissons de Crousty Vice" },
+  // { src: "/images/crousty-main.webp", alt: "Une box Crousty Vice servie à emporter" },
+];
+
+/** Affiches de la carte (visuels fournis par le restaurant). */
+export const posters: Photo[] = [
+  // { src: "/images/affiche-compose.webp", alt: "Affiche « Compose ton Crousty » : base, viandes, sauces et toppings avec les prix" },
+  // { src: "/images/affiche-sides.webp", alt: "Affiche des sides, boissons et desserts avec les prix" },
+];
 
 /** Arguments différenciants. */
 export const benefits = [
@@ -216,12 +267,12 @@ export const faq = [
   {
     question: "Qu'est-ce qu'un « Crousty » exactement ?",
     answer:
-      "Un Crousty est une box composée par le client : une base de riz blanc parfumé, une ou plusieurs protéines panées (tenders, tenders spicy, cordon bleu, bouchée camembert, nuggets), des toppings frais et l'une des sept sauces signature de la maison.",
+      "Un Crousty est une box composée par le client : une base de riz blanc parfumé, une ou plusieurs viandes panées à 2 € (tenders, spicy tenders, cordon bleu, camembert, nuggets), des toppings au choix (jalapeños, gratinage) et l'une des sept sauces signature de la maison.",
   },
   {
     question: "Combien coûte un repas chez Crousty Vice ?",
     answer:
-      "Un Crousty seul démarre à 4,90 € en taille S et 7,90 € en taille M. Le menu complet est à 5,90 € en taille S et 8,90 € en taille M, et 9,40 € avec gratinage. Les desserts sont à 3,50 € et 3,90 €, la boisson à 1,50 €.",
+      "Un Crousty seul démarre à 5,90 € en taille S et 7,90 € en taille M. En menu, comptez 6,90 € en taille S et 8,90 € en taille M, ou 9,40 € avec gratinage. Chaque viande est à 2 €, les sides à 2,90 €, la boisson à 1,50 € et les desserts de 3,50 € à 3,90 €.",
   },
   {
     question: "Où manger un plat de riz à composer près de Caen ?",
