@@ -566,25 +566,68 @@ body {
   opacity: 0.5;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .card-sticker:hover,
+  .card-sticker:focus-within {
+    transform: none;
+  }
+}
+
+/* ---------- Décor Vice City ---------- */
+
+/* Grille au sol, fuyant vers l'horizon */
+.vice-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 245, 200, 0.5) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 120, 190, 0.5) 1px, transparent 1px);
+  background-size: 52px 52px;
+  transform: perspective(300px) rotateX(70deg);
+  transform-origin: bottom center;
+  mask-image: linear-gradient(to top, #000 10%, transparent 85%);
+  -webkit-mask-image: linear-gradient(to top, #000 10%, transparent 85%);
+  opacity: 0.55;
+}
+
+/* Fines lignes horizontales, façon image vidéo */
+.vice-scanlines {
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.16) 0px,
+    rgba(0, 0, 0, 0.16) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+}
+
 /* Titre chromé : dégradé clair du haut vers le rose, contour et lueur néon */
 .graffiti-chrome {
-  background: linear-gradient(to bottom, #ffffff 0%, #ffe9f7 42%, #ff8fd2 72%, #ff2e88 100%);
+  -webkit-text-stroke: 0;
+  background: linear-gradient(to bottom, #ffffff 0%, #ffffff 40%, #ffe2f4 62%, #ffb2de 82%, #ff7ac4 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  filter: drop-shadow(0 0 0.25em rgba(255, 120, 200, 0.65));
+  filter: drop-shadow(0 0 0.2em rgba(255, 150, 215, 0.55));
 }
 
 /* Un dégradé de texte et un contour ne peuvent pas s'appliquer au même nœud :
-   on superpose trois copies, dans l'ordre du DOM (contour sombre, contour
-   magenta, puis remplissage). Pas de z-index négatif, qui ferait passer les
-   contours derrière le fond de la section. */
+   on superpose quatre copies, dans l'ordre du DOM. De l'extérieur vers
+   l'intérieur, comme sur le logo du restaurant :
+     1. liseré prune foncé
+     2. contour BLANC épais  <- c'est lui qui donne l'éclat du logo
+     3. liseré magenta
+     4. remplissage dégradé blanc -> rose clair
+   Pas de z-index négatif, qui ferait passer les contours derrière le fond.
+   Un léger interlettrage évite que les contours épais se rejoignent. */
 .chrome-wrap {
   position: relative;
   display: inline-block;
-  /* Un peu d'air entre les lettres : sinon les contours épais se rejoignent
-     et forment des pâtés sombres. */
-  letter-spacing: 0.045em;
+  letter-spacing: 0.09em;
+  filter: drop-shadow(0 0.055em 0 rgba(96, 10, 68, 0.55));
+  /* `.graffiti` pose un contour sombre qui, hérité, viendrait se glisser
+     entre l'anneau blanc et le remplissage. Chaque couche pose le sien. */
+  -webkit-text-stroke: 0;
 }
 
 .chrome-layer {
@@ -594,12 +637,16 @@ body {
   white-space: inherit;
 }
 
-.chrome-stroke-ink {
-  -webkit-text-stroke: 0.115em var(--color-ink);
+.chrome-stroke-plum {
+  -webkit-text-stroke: 0.3em #64114c;
+}
+
+.chrome-stroke-white {
+  -webkit-text-stroke: 0.27em #ffffff;
 }
 
 .chrome-stroke-pink {
-  -webkit-text-stroke: 0.075em #ff2e88;
+  -webkit-text-stroke: 0.08em #ff2e88;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -631,5 +678,5 @@ body {
   bottom: 0;
   width: 108%;
   height: 0.34em;
-  filter: drop-shadow(0 0.04em 0 rgba(42, 10, 36, 0.5));
+  filter: drop-shadow(0 0.045em 0 rgba(96, 10, 68, 0.5));
 }
