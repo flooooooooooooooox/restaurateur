@@ -4,6 +4,7 @@ import Particles from "./Particles";
 import Skyline from "./Skyline";
 import { heroPhoto, siteConfig } from "@/lib/site-data";
 import { ArrowIcon, ClockIcon, PhoneIcon, PinIcon } from "./Icons";
+import GoogleRating from "./GoogleRating";
 
 export default function Hero() {
   return (
@@ -45,7 +46,11 @@ export default function Hero() {
           </a>
         </div>
 
-        <ul className="animate-hero-in mt-9 flex flex-wrap gap-x-6 gap-y-3 text-sm font-semibold text-white/80" style={{ animationDelay: "0.52s" }}>
+        <div className="animate-hero-in mt-7" style={{ animationDelay: "0.46s" }}>
+          <GoogleRating size={18} />
+        </div>
+
+        <ul className="animate-hero-in mt-7 flex flex-wrap gap-x-6 gap-y-3 text-sm font-semibold text-white/80" style={{ animationDelay: "0.58s" }}>
           <li className="flex items-center gap-2">
             <ClockIcon size={17} className="text-lemon" /> Ouvert {siteConfig.hours.short}
           </li>

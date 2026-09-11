@@ -41,6 +41,9 @@ export default function BuilderTeaser() {
               <Link href="/la-carte#composer" className="btn btn-primary" data-cta="builder-teaser">
                 Composer mon Crousty <ArrowIcon size={17} />
               </Link>
+              <Link href="/la-carte" className="btn btn-outline" data-cta="teaser-menu">
+                La carte
+              </Link>
 
               <dl className="flex flex-wrap gap-x-5 gap-y-2 text-sm">
                 {TARIFS.map((t) => (

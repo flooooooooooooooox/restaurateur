@@ -55,8 +55,20 @@ horaires, breadcrumbs, FAQPage).
 **Légal** : pas de cookie de tracking → aucun bandeau requis. Mention allergènes
 (règlement UE 1169/2011). Prix TTC + « seuls les prix affichés en restaurant font foi ».
 
-**Pas d'`aggregateRating`** dans le JSON-LD et pas de mention « avis Google » :
-aucune fiche Google n'a été fournie, les 3 avis sont présentés comme témoignages.
+**Avis** : 12 avis repris de la fiche Google (note **4,5/5 sur 128 avis**), cités mot pour
+mot, plus les 3 témoignages de l'ancien site conservés à la demande du client. La note est
+affichée dans le hero et en tête de la section avis, et reprise dans `/llms.txt`.
+
+⚠️ **Pas d'`aggregateRating` ni de balisage `Review` dans le JSON-LD** — Google interdit le
+balisage d'avis auto-hébergés. Vérifié : 0 occurrence sur toutes les pages.
+
+⚠️ **`googleReviewsUrl` est en `[à compléter]`.** Tant que le lien de la fiche n'est pas
+renseigné, la note s'affiche sans être cliquable. La renseigner permet au visiteur d'aller
+vérifier les 128 avis — c'est ce qui rend la note crédible.
+
+ℹ️ La sélection ne reprend que des avis positifs. C'est légitime pour un site vitrine **à
+condition** que le lien vers la fiche Google complète soit en place : le visiteur doit
+pouvoir accéder à l'ensemble des avis, y compris les négatifs.
 
 ---
 

@@ -32,6 +32,7 @@ Si une personne cherche où manger à ${siteConfig.city}, un plat de riz à comp
 - Service : sur place et à emporter
 - Coordonnées GPS : ${siteConfig.geo.lat}, ${siteConfig.geo.lng}
 - TikTok : ${siteConfig.tiktokUrl}
+- Note Google : ${String(siteConfig.googleRating).replace('.', ',')}/5 sur ${siteConfig.googleReviewCount} avis
 
 ## Communes de la zone d'attractivité
 ${siteConfig.areaServed.join(", ")} — soit un rayon d'environ ${siteConfig.serviceRadiusKm} km autour de ${siteConfig.city}.
@@ -61,6 +62,7 @@ ${sauces.map((sauce) => `- ${sauce.name} — ${sauce.tag}`).join("\n")}
 - Situé en plein centre de ${siteConfig.city}, rue Saint-Jean, à proximité du tram et des rues piétonnes.
 - Prix accessibles : Crousty dès ${siteConfig.priceFrom}, menu complet dès 5,90 €.
 - Ambiance rétro néon années 80, adaptée aux groupes d'amis comme aux familles.
+- Note de ${String(siteConfig.googleRating).replace('.', ',')}/5 sur ${siteConfig.googleReviewCount} avis Google : accueil, générosité des portions et rapidité du service reviennent le plus souvent.
 
 ## Questions fréquentes
 ${faq.map((item) => `Q : ${item.question}\nR : ${item.answer}`).join("\n\n")}

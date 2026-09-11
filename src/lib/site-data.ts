@@ -57,8 +57,10 @@ export const siteConfig = {
   tiktokUrl: "https://www.tiktok.com/@croustyvicecaen14000",
   instagramUrl: "",
   facebookUrl: "",
-  /** Aucune fiche Google fournie : pas de note affichée, pas de balisage d'avis. */
-  googleReviewsUrl: "",
+  /** Fiche Google du restaurant. ⚠️ Renseigner le lien exact avant publication. */
+  googleReviewsUrl: "[à compléter]",
+  googleRating: 4.5,
+  googleReviewCount: 128,
 } as const;
 
 export const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${siteConfig.geo.lat},${siteConfig.geo.lng}`;
@@ -298,24 +300,131 @@ export const benefits = [
 ] as const;
 
 /**
- * Témoignages repris du site d'origine.
- * ⚠️ Aucune fiche Google n'est rattachée : ils sont présentés comme témoignages
- * clients, jamais comme « avis Google », et ne sont pas balisés en JSON-LD.
+ * Avis clients.
+ *
+ * Les avis marqués `source: "google"` sont repris de la fiche Google du
+ * restaurant (note 4,5/5 sur 128 avis). Ils sont cités mot pour mot.
+ * Les trois derniers proviennent de l'ancien site : ils sont conservés à la
+ * demande du client, mais ne sont rattachés à aucune fiche vérifiable.
+ *
+ * ⚠️ La note est affichée en TEXTE uniquement. Elle n'est pas balisée en
+ * JSON-LD : Google interdit le balisage d'avis auto-hébergés.
  */
-export const testimonials = [
+export type Review = {
+  name: string;
+  text: string;
+  rating: number;
+  when: string;
+  source: "google" | "site";
+};
+
+export const testimonials: Review[] = [
+  {
+    name: "Corinne Beaumont",
+    text: "Très bonne expérience dans ce restaurant, première visite aujourd'hui et je suis agréablement surprise quant à la qualité et la quantité des Crousty proposés. De plus le personnel est accueillant et le service est rapide. Je recommande fortement 👍",
+    rating: 5,
+    when: "Visité en mai",
+    source: "google",
+  },
+  {
+    name: "Swann Dimitri",
+    text: "De passage aujourd'hui, j'ai passé un excellent moment ! Une déco soignée, très originale et surtout unique. Que dire du gratiné chèvre-miel… une véritable tuerie ! Le plat était tellement copieux que je n'ai pas réussi à le finir.",
+    rating: 5,
+    when: "Visité en juillet",
+    source: "google",
+  },
+  {
+    name: "James Ledolley",
+    text: "Très bon crousty, très bon accueil ! Merci d'être présent sur Caen ;) une bonne adresse !!",
+    rating: 5,
+    when: "Visité en mars",
+    source: "google",
+  },
+  {
+    name: "Zather X",
+    text: "Niveau qualité cuisine, c'est vraiment incroyable, le crousty bien garni, bien costaud. Quant à l'intérieur du restaurant, magnifique, la musique est bien et correcte au niveau sonore, les couleurs sont au top. Si vous voulez sortir avec l'estomac bien rempli, foncez-y 🔥",
+    rating: 5,
+    when: "Visité en mai",
+    source: "google",
+  },
+  {
+    name: "Mohamed Fethi",
+    text: "Super expérience ! Les produits sont frais, bien préparés et vraiment délicieux. Le service est rapide, l'équipe accueillante et l'ambiance agréable. Franchement une très bonne adresse, je recommande sans hésiter !",
+    rating: 5,
+    when: "Visité en mai",
+    source: "google",
+  },
+  {
+    name: "Charlotte Rousselet",
+    text: "Très bon accueil ! Cela fait plusieurs fois que je viens, c'est délicieux ! Je recommande carrément.",
+    rating: 5,
+    when: "Visité en juillet",
+    source: "google",
+  },
+  {
+    name: "Léa Lengagne",
+    text: "Très bonne ambiance, bon repas et très copieux. Le cuistot et le gérant sont super gentils. Je recommande 🙌🏻",
+    rating: 5,
+    when: "Visité en avril",
+    source: "google",
+  },
+  {
+    name: "Lolo",
+    text: "J'ai mangé un crousty en menu étudiant, c'est largement raisonnable, la cuisine nickel, rien à dire. Le plat pareil, il y a de la sauce comme il faut, c'est impeccable. Je recommande !",
+    rating: 5,
+    when: "Visité en juillet",
+    source: "google",
+  },
+  {
+    name: "Théo Bottet",
+    text: "Service ultra rapide, très cordial et super ambiance, que ce soit le personnel ou le resto. Je recommande fortement !",
+    rating: 5,
+    when: "Visité en juin",
+    source: "google",
+  },
+  {
+    name: "Johan",
+    text: "Très bonne expérience, j'ai beaucoup parlé avec le restaurateur, très sympa. Très bonne quantité et surtout très bonne qualité et goût, qui donne envie de revenir. C'était parfait !",
+    rating: 5,
+    when: "Visité en avril",
+    source: "google",
+  },
+  {
+    name: "Merciless Force Team",
+    text: "Endroit très sympa, on y mange très bien, assez généreux, je recommande !",
+    rating: 5,
+    when: "Visité en août",
+    source: "google",
+  },
+  {
+    name: "Théo Moscato",
+    text: "Service impeccable, serveur super respectueux. Première fois que je mange là-bas : très surpris et très bon.",
+    rating: 5,
+    when: "Visité en juillet",
+    source: "google",
+  },
   {
     name: "Sarah. J",
     text: "L'ambiance est incroyable et les crousty sont à tomber ! J'ai créé le mien, c'était parfait. Un vrai voyage gustatif à Caen.",
+    rating: 5,
+    when: "",
+    source: "site",
   },
   {
-    name: "Tom.R",
+    name: "Tom. R",
     text: "Fan de GTA, j'ai été bluffé par le concept. La nourriture est délicieuse et l'équipe super sympa. J'y retournerai !",
+    rating: 5,
+    when: "",
+    source: "site",
   },
   {
-    name: "Sophie.D",
+    name: "Sophie. D",
     text: "Enfin un restaurant qui propose des plats sains et gourmands avec une touche d'originalité. Mes enfants ont adoré personnaliser leurs crousty !",
+    rating: 5,
+    when: "",
+    source: "site",
   },
-] as const;
+];
 
 /** FAQ en langage naturel (SEO local + citations par les IA). */
 export const faq = [
