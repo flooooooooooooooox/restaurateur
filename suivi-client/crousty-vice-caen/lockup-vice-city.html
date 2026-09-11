@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lockup Crousty Vice — rétro néon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Titan+One&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   Lockup « Crousty Vice » — version autonome.
+   Même construction que le site (src/components/ChromeTitle.tsx,
+   ScriptTitle.tsx, ViceBackdrop.tsx et les règles de globals.css).
+   Aucune dépendance : ouvrir ce fichier dans un navigateur.
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  --ink: #9c0a52;          /* liseré extérieur */
+  --neon: #ff2e88;         /* magenta néon */
+  --extrude-1: #d4176f;    /* haut de l'extrusion */
+  --extrude-2: #64095a;    /* bas de l'extrusion, vire au violet */
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 6vh 5vw;
+  font-family: system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* ─── 1. FOND : dégradé néon + rayons de soleil ─────────────────── */
+
+.scene {
+  position: relative;
+  width: min(1100px, 100%);
+  padding: 12vh 6vw;
+  overflow: hidden;
+  border-radius: 24px;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 120%, #ff8a3d 0%, transparent 60%),
+    linear-gradient(to bottom, #2b0a4a 0%, #7b1a7a 34%, #d81e8c 62%, #ff4d7d 88%, #ff8a3d 100%);
+}
+
+/* Rayons alternés, rayonnant depuis le centre bas */
+.sunburst {
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  width: 300%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  opacity: 0.09;
+  mix-blend-mode: screen;
+  animation: sunburst-spin 220s linear infinite;
+}
+
+@keyframes sunburst-spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+
+/* Scanlines vidéo */
+.scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0,0,0,.16) 0 1px, transparent 1px 3px
+  );
+  mix-blend-mode: multiply;
+  opacity: .5;
+  pointer-events: none;
+}
+
+.lockup { position: relative; }
+
+/* ─── 2. TITRE : une pile de 5 couches PAR LETTRE ───────────────── */
+
+/* Pourquoi par lettre : avec un seul bloc de texte, le contour blanc est
+   tracé pour toute la ligne d'un coup et les lettres voisines fusionnent.
+   Sur le logo, chaque lettre garde son contour complet et passe PAR-DESSUS
+   la précédente — d'où une pile par caractère, empilée de gauche à droite. */
+
+.line {
+  display: inline-block;
+  font-family: "Titan One", system-ui, sans-serif;
+  font-size: clamp(44px, 9vw, 104px);
+  line-height: .95;
+  text-transform: uppercase;
+  /* Italique : la police n'a pas de vrai italique, on incline le lockup.
+     Léger resserrement, le dessin d'origine étant plus étroit. */
+  transform: skewX(-9deg) scaleX(.94);
+  /* Le contour blanc déborde d'environ .18em de chaque côté : cet écart fait
+     que les lettres se touchent sans se recouvrir. */
+  letter-spacing: .19em;
+}
+
+.letter {
+  position: relative;
+  display: inline-block;
+  -webkit-text-stroke: 0;
+  /* EXTRUSION 3D : des ombres enchaînées, chacune appliquée au résultat de la
+     précédente, se soudent en un bloc plein — au lieu de copies visibles. */
+  filter:
+    drop-shadow(.013em .016em 0 var(--extrude-1))
+    drop-shadow(.013em .016em 0 #c31364)
+    drop-shadow(.013em .016em 0 #b00f58)
+    drop-shadow(.013em .016em 0 #a50d52)
+    drop-shadow(.013em .016em 0 #8d0a4d)
+    drop-shadow(.013em .016em 0 #7a0a52)
+    drop-shadow(.013em .016em 0 var(--extrude-2))
+    drop-shadow(.02em .05em .05em rgba(58,6,86,.55));
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+  color: transparent;
+  white-space: pre;
+}
+
+.s-outer { -webkit-text-stroke: .44em var(--ink); }    /* liseré extérieur   */
+.s-white { -webkit-text-stroke: .355em #fff; }          /* contour blanc net  */
+.s-inner { -webkit-text-stroke: .022em #ff8ccb; }       /* raccord magenta    */
+
+/* Dégradé chromé : blanc dominant en haut, magenta en bas, et un liseré
+   sombre sur les derniers pourcents qui fait le biseau au pied de la lettre. */
+.fill {
+  -webkit-text-stroke: 0;
+  background: linear-gradient(to bottom,
+    #ffc4e4 0%, #fff 12%, #fff 36%, #ffb0dd 48%,
+    #ff5fb4 66%, #ee2189 82%, #c60e6d 94%, #9e0a55 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 .2em rgba(255,150,215,.55));
+}
+
+/* Reflet spéculaire : la bande lumineuse du tiers haut. C'est elle qui donne
+   l'aspect gonflé et brillant, plutôt qu'un simple aplat dégradé. */
+.gloss {
+  -webkit-text-stroke: 0;
+  background: linear-gradient(to bottom,
+    rgba(255,255,255,.95) 4%, rgba(255,255,255,.6) 16%,
+    rgba(255,255,255,.12) 28%, rgba(255,255,255,0) 38%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ─── 3. SIGNATURE MANUSCRITE, qui chevauche le titre ───────────── */
+
+.script-row {
+  position: relative;
+  z-index: 10;
+  margin-top: .02em;      /* le chevauchement vient du débordement des contours */
+  padding-left: .9em;
+  font-size: clamp(34px, 7vw, 80px);
+}
+
+.script-wrap { position: relative; display: inline-block; padding-bottom: .38em; }
+
+.script {
+  font-family: "Pacifico", cursive;
+  line-height: 1.1;
+  display: inline-block;
+  transform: skewX(-4deg);
+}
+
+/* La ligne fluide qui souligne l'ensemble */
+.swash {
+  position: absolute;
+  left: -2%; right: -6%; bottom: 0;
+  width: 108%; height: .34em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sunburst { animation: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="scene">
+  <!-- Rayons de soleil -->
+  <svg class="sunburst" viewBox="-100 -100 200 200" aria-hidden="true">
+    <g id="rays" fill="#fff"></g>
+  </svg>
+
+  <div class="lockup">
+    <!-- Titre : chaque lettre est une pile de 5 couches -->
+    <div class="line" id="title" aria-label="Compose"></div>
+
+    <!-- Signature manuscrite -->
+    <div class="script-row">
+      <span class="script-wrap" aria-hidden="true">
+        <span class="letter script">
+          <span class="layer s-outer">ton Crousty</span>
+          <span class="layer s-white">ton Crousty</span>
+          <span class="layer s-inner">ton Crousty</span>
+          <span class="fill">ton Crousty</span>
+          <span class="layer gloss">ton Crousty</span>
+        </span>
+        <svg class="swash" viewBox="0 0 300 26" preserveAspectRatio="none">
+          <path d="M6 17C60 26 150 24 240 12c22-3 36-4 48 0" fill="none" stroke="#9c0a52" stroke-width="15" stroke-linecap="round"/>
+          <path d="M6 17C60 26 150 24 240 12c22-3 36-4 48 0" fill="none" stroke="#fff"     stroke-width="11" stroke-linecap="round"/>
+          <path d="M6 16C60 25 150 23 240 11c22-3 36-4 48 0" fill="none" stroke="#ff63b6"  stroke-width="4"  stroke-linecap="round"/>
+        </svg>
+      </span>
+    </div>
+  </div>
+
+  <div class="scanlines"></div>
+</div>
+
+<script>
+// Les rayons du sunburst : un wedge sur deux.
+{
+  const g = document.getElementById("rays");
+  const N = 28, R = 200;
+  for (let i = 0; i < N; i += 2) {
+    const a0 = (i / N) * Math.PI * 2, a1 = ((i + 1) / N) * Math.PI * 2;
+    const p = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    p.setAttribute("d",
+      `M0 0L${Math.cos(a0)*R} ${Math.sin(a0)*R}L${Math.cos(a1)*R} ${Math.sin(a1)*R}Z`);
+    g.appendChild(p);
+  }
+}
+
+// Le titre, découpé en lettres. aria-label porte le mot entier :
+// sans ça, un lecteur d'écran épellerait C-O-M-P-O-S-E.
+{
+  const el = document.getElementById("title");
+  for (const ch of el.getAttribute("aria-label")) {
+    if (ch === " ") { el.insertAdjacentHTML("beforeend", '<span style="display:inline-block;width:.3em"></span>'); continue; }
+    el.insertAdjacentHTML("beforeend",
+      `<span class="letter" aria-hidden="true">
+         <span class="layer s-outer">${ch}</span>
+         <span class="layer s-white">${ch}</span>
+         <span class="layer s-inner">${ch}</span>
+         <span class="fill">${ch}</span>
+         <span class="layer gloss">${ch}</span>
+       </span>`);
+  }
+}
+</script>
+</body>
+</html>
