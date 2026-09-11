@@ -637,9 +637,10 @@ body {
     drop-shadow(0.013em 0.016em 0 #ba115e)
     drop-shadow(0.013em 0.016em 0 #b00f58)
     drop-shadow(0.013em 0.016em 0 #a50d52)
-    drop-shadow(0.013em 0.016em 0 #9a0b4b)
-    drop-shadow(0.013em 0.016em 0 #8d0844)
-    drop-shadow(0 0.04em 0.045em rgba(52, 3, 34, 0.5));
+    drop-shadow(0.013em 0.016em 0 #8d0a4d)
+    drop-shadow(0.013em 0.016em 0 #7a0a52)
+    drop-shadow(0.013em 0.016em 0 #64095a)
+    drop-shadow(0.02em 0.05em 0.05em rgba(58, 6, 86, 0.55));
 }
 
 .chrome-space {
@@ -857,4 +858,18 @@ body {
     drop-shadow(0.012em 0.015em 0 #ad0e56)
     drop-shadow(0.012em 0.015em 0 #9c0a4c)
     drop-shadow(0 0.03em 0.03em rgba(52, 3, 34, 0.5));
+}
+
+/* Rotation très lente des rayons de soleil */
+@keyframes sunburst-spin {
+  to { transform: rotate(360deg); }
+}
+
+.animate-sunburst {
+  transform-origin: center;
+  animation: sunburst-spin 220s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-sunburst { animation: none; }
 }

@@ -25,7 +25,7 @@ export default function Hero() {
 
         <h1 className="animate-hero-in mt-6 max-w-3xl" style={{ animationDelay: "0.15s" }}>
           <ChromeTitle className="block text-5xl sm:text-7xl">Compose</ChromeTitle>
-          <ScriptTitle className="mt-3 block text-4xl sm:text-6xl">ton Crousty</ScriptTitle>
+          <ScriptTitle className="relative z-10 mt-1 block pl-5 text-4xl sm:mt-2 sm:pl-14 sm:text-6xl">ton Crousty</ScriptTitle>
           <span className="mt-4 block max-w-xl text-lg font-bold leading-snug text-white [text-shadow:0_2px_12px_rgba(43,10,74,0.85)] sm:text-xl">
             Restaurant de box de riz à composer à {siteConfig.city}.
           </span>
