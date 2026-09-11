@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import Hero from "@/components/Hero";
 import ProcessSection from "@/components/ProcessSection";
-import MenuBoard from "@/components/MenuBoard";
-import SauceBoard from "@/components/SauceBoard";
-import SectionHeading from "@/components/SectionHeading";
 import BenefitsSection from "@/components/BenefitsSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import LocationSection from "@/components/LocationSection";
@@ -12,9 +9,6 @@ import CtaSection from "@/components/CtaSection";
 import BuilderTeaser from "@/components/BuilderTeaser";
 import Gallery from "@/components/Gallery";
 import JsonLd from "@/components/JsonLd";
-import Reveal from "@/components/Reveal";
-import Link from "next/link";
-import { ArrowIcon } from "@/components/Icons";
 import { siteConfig } from "@/lib/site-data";
 import { getFaqSchema } from "@/lib/structured-data";
 
@@ -47,47 +41,6 @@ export default function HomePage() {
 
       <ProcessSection />
       <BuilderTeaser />
-
-      {/* Aperçu de la carte */}
-      <section className="py-20">
-        <div className="mx-auto max-w-6xl px-5">
-          <SectionHeading
-            eyebrow="La carte"
-            title={<>Créez votre <span className="text-gradient">Crousty</span></>}
-            intro="Une base de riz, ta sauce signature et les garnitures que tu veux. Les prix parlent d'eux-mêmes."
-            sparkle
-          />
-          <div className="mt-14">
-            <MenuBoard />
-          </div>
-
-          {/* Carte des sauces — présentation synthétique */}
-          <div className="mt-16">
-            <div className="flex flex-wrap items-end justify-between gap-4">
-              <div>
-                <p className="text-xs font-bold uppercase tracking-[0.28em] text-brand">Les sauces signature</p>
-                <h3 className="mt-2 font-display text-2xl font-extrabold tracking-tight sm:text-3xl">
-                  Sept sauces, une signature
-                </h3>
-              </div>
-              <p className="max-w-sm text-sm text-cream/55">
-                Du plus doux au plus relevé&nbsp;: les flammes te guident.
-              </p>
-            </div>
-            <div className="mt-8">
-              <SauceBoard />
-            </div>
-          </div>
-
-          <Reveal>
-            <div className="mt-12 text-center">
-              <Link href="/la-carte" className="btn btn-outline" data-cta="home-menu">
-                Voir la carte complète <ArrowIcon size={17} />
-              </Link>
-            </div>
-          </Reveal>
-        </div>
-      </section>
 
       <Gallery />
       <BenefitsSection />
