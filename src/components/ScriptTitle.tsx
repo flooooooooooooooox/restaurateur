@@ -28,9 +28,9 @@ export default function ScriptTitle({
         </span>
 
         <svg aria-hidden="true" viewBox="0 0 300 26" preserveAspectRatio="none" className="script-swash">
-          <path d="M6 17 C 60 26, 150 24, 240 12 C 262 9, 276 8, 288 12" fill="none" stroke="#64114c" strokeWidth="13" strokeLinecap="round" />
-          <path d="M6 17 C 60 26, 150 24, 240 12 C 262 9, 276 8, 288 12" fill="none" stroke="#ffffff" strokeWidth="10" strokeLinecap="round" />
-          <path d="M6 17 C 60 26, 150 24, 240 12 C 262 9, 276 8, 288 12" fill="none" stroke="#ff2e88" strokeWidth="5" strokeLinecap="round" />
+          <path d="M6 17 C 60 26, 150 24, 240 12 C 262 9, 276 8, 288 12" fill="none" stroke="#b3105f" strokeWidth="14" strokeLinecap="round" />
+          <path d="M6 17 C 60 26, 150 24, 240 12 C 262 9, 276 8, 288 12" fill="none" stroke="#ffffff" strokeWidth="11" strokeLinecap="round" />
+          <path d="M6 17 C 60 26, 150 24, 240 12 C 262 9, 276 8, 288 12" fill="none" stroke="#ff4fa8" strokeWidth="4" strokeLinecap="round" />
         </svg>
       </span>
     </span>
