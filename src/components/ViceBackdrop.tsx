@@ -105,7 +105,7 @@ export default function ViceBackdrop({
               </g>
             </mask>
           </defs>
-          <circle cx="100" cy="100" r="72" fill="url(#vice-sun)" mask="url(#vice-sun-slits)" opacity="0.92" />
+          <circle cx="100" cy="100" r="72" fill="url(#vice-sun)" mask="url(#vice-sun-slits)" opacity="0.62" />
           <circle cx="100" cy="100" r="72" fill="none" stroke="#fff6c9" strokeWidth="0.8" opacity="0.35" />
         </svg>
       )}
