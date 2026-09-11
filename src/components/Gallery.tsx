@@ -40,6 +40,7 @@ export default function Gallery() {
                   alt={photo.alt}
                   width={photo.w}
                   height={photo.h}
+                  quality={95}
                   sizes={
                     photo.wide
                       ? "(max-width: 1024px) 100vw, 640px"

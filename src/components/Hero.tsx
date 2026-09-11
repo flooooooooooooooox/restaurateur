@@ -73,6 +73,7 @@ export default function Hero() {
                 width={heroPhoto.w}
                 height={heroPhoto.h}
                 priority
+                quality={95}
                 sizes="340px"
                 className="w-full object-cover"
               />

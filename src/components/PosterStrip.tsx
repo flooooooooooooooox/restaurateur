@@ -17,8 +17,9 @@ export default function PosterStrip() {
                 <Image
                   src={poster.src}
                   alt={poster.alt}
-                  width={1600}
-                  height={900}
+                  width={poster.w}
+                  height={poster.h}
+                  quality={95}
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="w-full object-cover"
                 />

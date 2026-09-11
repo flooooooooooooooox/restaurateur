@@ -76,17 +76,22 @@ Ces champs sont en `[à compléter]`, visibles en surbrillance sur `/mentions-le
 - **Photos — 3 en ligne, en basse résolution.** Le client a fourni un montage
   (`suivi-client/crousty-vice-caen/sources/montage-photos-original.webp`) qui a été découpé
   automatiquement en 3 fichiers :
-  | Fichier | Taille source | Emplacement |
-  |---|---|---|
-  | `crousty-main.webp` | 228 × 403 | Hero (photo d'accueil) |
-  | `salle-bornes.webp` | 473 × 521 | Galerie |
-  | `frigo-boissons.webp` | 228 × 188 | Galerie |
+  | Fichier | Découpe source | Fichier livré | Emplacement |
+  |---|---|---|---|
+  | `crousty-main.webp` | 228 × 403 | 456 × 806 | Hero (photo d'accueil) |
+  | `salle-bornes.webp` | 473 × 521 | 946 × 1042 | Galerie |
+  | `frigo-boissons.webp` | 228 × 188 | 456 × 376 | Galerie |
 
-  ⚠️ Ces tailles sont **très faibles pour du web**. L'affichage a été volontairement borné
-  (hero 340 px, galerie en 2 colonnes dans un conteneur `max-w-3xl`) pour éviter un
-  agrandissement qui les rendrait floues. **Demander les originaux au client** (au moins
-  1600 px de large) et remplacer les fichiers — les dimensions se mettent à jour dans
-  `gallery` / `heroPhoto` de `src/lib/site-data.ts`.
+  **Traitement de netteté appliqué** : agrandissement Lanczos ×2, masque flou
+  (rayon 2,2 / 145 %) et léger gain de contraste local, réencodage WebP qualité 95.
+  `next.config.ts` autorise la qualité 95 (Next 16 réencode en 75 par défaut, ce qui
+  adoucissait nettement ces petites images) et les composants la demandent explicitement.
+
+  ⚠️ Cela **récupère du piqué mais n'invente pas de détail**. Les fichiers d'origine
+  restent très petits pour du web, et l'affichage est borné en conséquence (hero 340 px,
+  galerie en 2 colonnes dans un conteneur `max-w-3xl`). **Demander les originaux au
+  client** (au moins 1600 px de large) : c'est le seul vrai gain de qualité restant.
+  Il suffira de remplacer les fichiers et de corriger `w`/`h` dans `src/lib/site-data.ts`.
 
   Manquent encore : la box de riz en gros plan (le visuel signature), les 2 affiches de la
   carte (tableau `posters`, prêt), et **le logo**. Les 12 URLs de l'ancien site sont dans

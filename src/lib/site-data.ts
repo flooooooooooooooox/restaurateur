@@ -237,8 +237,8 @@ export type Photo = {
 export const heroPhoto: Photo | null = {
   src: "/images/crousty-main.webp",
   alt: "Une box Crousty Vice fraîchement préparée, tenue à la main : poulet croustillant, sauce et herbes sur un lit de riz",
-  w: 228,
-  h: 403,
+  w: 456,
+  h: 806,
 };
 
 /**
@@ -253,15 +253,15 @@ export const gallery: Photo[] = [
   {
     src: "/images/salle-bornes.webp",
     alt: "La salle de Crousty Vice : murs roses, néons et borne de commande tactile",
-    w: 473,
-    h: 521,
+    w: 946,
+    h: 1042,
     tilt: -1.5,
   },
   {
     src: "/images/frigo-boissons.webp",
     alt: "Le réfrigérateur à boissons de Crousty Vice, sodas et jus alignés sous les néons",
-    w: 228,
-    h: 188,
+    w: 456,
+    h: 376,
     tilt: 2,
     offset: 26,
   },
