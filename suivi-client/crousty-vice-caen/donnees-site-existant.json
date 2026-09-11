@@ -1,0 +1,125 @@
+{
+  "source": {
+    "url_origine": "https://sites.google.com/view/croustyvicecaen/accueil",
+    "plateforme": "Google Sites",
+    "methode": "miroir HTTrack 3.50-2",
+    "date_capture": "2026-09-11",
+    "pages": 1,
+    "note": "Les 3 fichiers accueil*.html du miroir sont identiques (variantes de query string). Site mono-page."
+  },
+  "entreprise": {
+    "nom": "Crousty Vice",
+    "nom_site": "Crousty Vice Caen",
+    "secteur": "Restauration rapide",
+    "concept": "Box de riz personnalisables, ambiance retro annees 80 / Vice City",
+    "ville": "Caen"
+  },
+  "contact": {
+    "adresse": "189 Rue Saint-Jean",
+    "code_postal": "14000",
+    "ville": "Caen",
+    "telephone": "02.31.24.87.45",
+    "email": null,
+    "gps": { "lat": 49.178474, "lng": -0.356334 },
+    "reseaux": {
+      "tiktok": "https://www.tiktok.com/@croustyvicecaen14000"
+    }
+  },
+  "horaires": {
+    "texte": "Lundi au Dimanche, 11h00 - 00h00",
+    "detail": { "lundi_dimanche": "11:00-00:00" }
+  },
+  "contenu": {
+    "hero": {
+      "titre": "Crousty Vice",
+      "accroche": "Bienvenue a Crousty Vice : La ou on compose son Crousty comme on cree un personnage de jeux video !",
+      "texte": "Preparez-vous a une immersion culinaire unique a Caen. Chez Crousty Vice, nous melangeons la liberte de creer votre plat de riz parfait avec l'energie vibrante des annees 80 facon Vice City. Une ambiance chaleureuse, des saveurs explosives, et une experience inoubliable vous attendent."
+    },
+    "sections": [
+      {
+        "titre": "Notre Concept",
+        "texte": "Chez Crousty Vice, imaginez votre plat ideal : une base de riz parfumee, des proteines juteuses et des sauces qui reveillent les papilles. Chaque box est une oeuvre d'art culinaire, cree par vous, pour vous. Une experience rapide, saine et incroyablement savoureuse."
+      },
+      {
+        "titre": "Notre Ambiance",
+        "texte": "Plongez dans l'univers de Crousty Vice des que vous franchissez nos portes. Des neons aux musiques entrainantes, chaque detail est pense pour vous transporter dans une ambiance retro, fun et decontractee. L'endroit parfait pour se detendre entre amis ou en famille et profiter d'un bon repas."
+      },
+      {
+        "titre": "Une experience inoubliable vous attend",
+        "texte": "Chez Crousty Vice, nous mettons un point d'honneur a offrir plus qu'un repas : une immersion complete. Decouvrez la qualite de nos ingredients, la creativite de nos recettes et l'energie de notre ambiance. Votre satisfaction est notre priorite, chaque pixel de votre experience est concu avec passion."
+      }
+    ]
+  },
+  "carte": {
+    "intro": "Creez votre 'Crousty' - Chaque 'Crousty' commence par une base de riz, suivi de notre sauce signature ainsi que de vos garnitures preferees.",
+    "categories": [
+      {
+        "nom": "La Base",
+        "items": [ { "nom": "Riz blanc parfume", "prix_eur": 5.90 } ]
+      },
+      {
+        "nom": "Les Toppings Frais",
+        "items": [
+          { "nom": "Gratinage", "prix_eur": 1.50 },
+          { "nom": "Jalapenos", "prix_eur": 0.50 }
+        ]
+      },
+      {
+        "nom": "Les Proteines",
+        "items": [
+          { "nom": "Tenders", "prix_eur": 2.00 },
+          { "nom": "Tenders 'Spicy'", "prix_eur": 2.00 },
+          { "nom": "Cordon bleu", "prix_eur": 2.00 },
+          { "nom": "Bouchee Camembert", "prix_eur": 2.00 },
+          { "nom": "Nuggets", "prix_eur": 2.00 }
+        ]
+      },
+      {
+        "nom": "Les Sauces Signature",
+        "items": [
+          { "nom": "Sweet chili doux" },
+          { "nom": "Soja Sucree" },
+          { "nom": "Algerienne" },
+          { "nom": "Boursin" },
+          { "nom": "BBQ" },
+          { "nom": "Biggy" },
+          { "nom": "Curry" }
+        ]
+      },
+      {
+        "nom": "Menu & Boissons-Dessert",
+        "items": [
+          { "nom": "Crousty seul - Taille S", "prix_eur": 4.90 },
+          { "nom": "Crousty seul - Taille M", "prix_eur": 7.90 },
+          { "nom": "Menu - Taille S", "prix_eur": 5.90 },
+          { "nom": "Menu - Taille M", "prix_eur": 8.90 },
+          { "nom": "Menu + Gratinage", "prix_eur": 9.40 },
+          { "nom": "Boisson au choix", "prix_eur": 1.50 },
+          { "nom": "Tiramisu", "prix_eur": 3.50 },
+          { "nom": "Tarte au Daim / Cheesecake", "prix_eur": 3.90 }
+        ]
+      }
+    ]
+  },
+  "avis": [
+    { "auteur": "Sarah. J", "texte": "L'ambiance est incroyable et les crousty sont a tomber ! J'ai cree le mien, c'etait parfait. Un vrai voyage gustatif a Caen." },
+    { "auteur": "Tom.R", "texte": "Fan de GTA, j'ai ete bluffe par le concept. La nourriture est delicieuse et l'equipe super sympa. J'y retournerai !" },
+    { "auteur": "Sophie.D", "texte": "Enfin un restaurant qui propose des plats sains et gourmands avec une touche d'originalite. Mes enfants ont adore personnaliser leurs crousty !" }
+  ],
+  "seo": {
+    "title": "Crousty Vice Caen",
+    "og_title": "Crousty Vice Caen",
+    "og_type": "website",
+    "meta_description": null,
+    "lang_declaree": null
+  },
+  "manquant": [
+    "Email de contact",
+    "SIRET / forme juridique / mentions legales",
+    "Lien et note Google Business",
+    "Lien de commande en ligne / livraison",
+    "Allergenes et informations nutritionnelles",
+    "Instagram / Facebook",
+    "Meta description"
+  ]
+}
