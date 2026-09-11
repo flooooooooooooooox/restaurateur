@@ -2,8 +2,11 @@
 
 **Statut** : 🟡 construit, **NON publiable en l'état** (informations légales manquantes).
 **Variante de design** : V21 « Vice Néon », **reprise sur la direction artistique des affiches
-du restaurant** : rose dominant, titres graffiti cernés (Luckiest Guy), accents manuscrits
-(Pacifico), panneaux jaune citron et menthe, stickers de prix, skyline et palmiers en silhouette.
+et sur l'univers Vice City** : ciel dégradé coucher de soleil (nuit violette → magenta →
+orange), soleil à bandes horizontales, étoiles, grille en perspective, scanlines, skyline
+Art déco et palmiers en silhouette. Titres au traitement du logo (`ChromeTitle` /
+`ScriptTitle`) : dégradé blanc → rose, double contour encre + magenta, fioriture sous le mot
+manuscrit. Panneaux jaune citron et menthe et stickers de prix pour la carte.
 **Stack** : Next.js 16 (App Router) · Tailwind v4 · TypeScript · Leaflet/OpenStreetMap.
 
 ---

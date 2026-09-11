@@ -1,17 +1,17 @@
 import Link from "next/link";
 import Image from "next/image";
 import Particles from "./Particles";
+import ViceBackdrop from "./ViceBackdrop";
+import ChromeTitle from "./ChromeTitle";
+import ScriptTitle from "./ScriptTitle";
 import Skyline from "./Skyline";
 import { heroPhoto, siteConfig } from "@/lib/site-data";
 import { ArrowIcon, ClockIcon, PhoneIcon, PinIcon } from "./Icons";
 
 export default function Hero() {
   return (
-    <section className="panel-hot relative overflow-hidden">
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        <div className="animate-drift-a absolute -left-24 -top-24 h-[26rem] w-[26rem] rounded-full bg-white/15 blur-3xl" />
-        <div className="animate-drift-b absolute -right-20 top-10 h-[22rem] w-[22rem] rounded-full bg-lemon/20 blur-3xl" />
-      </div>
+    <section className="relative overflow-hidden">
+      <ViceBackdrop />
       <Particles />
       <Skyline className="pointer-events-none absolute inset-x-0 bottom-0 h-56 w-full opacity-70" />
 
@@ -24,14 +24,14 @@ export default function Hero() {
         </p>
 
         <h1 className="animate-hero-in mt-6 max-w-3xl" style={{ animationDelay: "0.15s" }}>
-          <span className="graffiti block text-5xl sm:text-7xl">Compose</span>
-          <span className="script mt-2 block text-4xl sm:text-6xl">ton Crousty</span>
-          <span className="mt-4 block max-w-xl text-lg font-bold leading-snug text-white sm:text-xl">
+          <ChromeTitle className="block text-5xl sm:text-7xl">Compose</ChromeTitle>
+          <ScriptTitle className="mt-3 block text-4xl sm:text-6xl">ton Crousty</ScriptTitle>
+          <span className="mt-4 block max-w-xl text-lg font-bold leading-snug text-white [text-shadow:0_2px_12px_rgba(43,10,74,0.85)] sm:text-xl">
             Restaurant de box de riz à composer à {siteConfig.city}.
           </span>
         </h1>
 
-        <p className="animate-hero-in mt-5 max-w-xl text-base leading-relaxed text-white/85" style={{ animationDelay: "0.28s" }}>
+        <p className="animate-hero-in mt-5 max-w-xl text-base leading-relaxed text-white/90 [text-shadow:0_1px_10px_rgba(43,10,74,0.7)]" style={{ animationDelay: "0.28s" }}>
           Une base de riz parfumée, tes viandes croustillantes à 2 €, tes toppings et l&apos;une
           des sept sauces signature. Le tout dans une ambiance néon droit sortie des années 80.
         </p>

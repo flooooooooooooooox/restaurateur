@@ -1,6 +1,7 @@
 import { testimonials } from "@/lib/site-data";
 import Reveal from "./Reveal";
 import Skyline from "./Skyline";
+import ViceBackdrop from "./ViceBackdrop";
 
 const TILTS = [-1.5, 0.8, 1.6];
 
@@ -8,12 +9,9 @@ export default function TestimonialsSection() {
   if (!testimonials.length) return null;
 
   return (
-    <section className="panel-hot relative overflow-hidden py-20 pb-28">
-      <Skyline className="pointer-events-none absolute inset-x-0 bottom-0 h-32 w-full opacity-30" />
-      <div
-        aria-hidden="true"
-        className="animate-drift-b pointer-events-none absolute -left-24 top-0 h-72 w-72 rounded-full bg-lemon/20 blur-3xl"
-      />
+    <section className="relative overflow-hidden py-20 pb-28">
+      <ViceBackdrop withSun={false} />
+      <Skyline className="pointer-events-none absolute inset-x-0 bottom-0 h-32 w-full opacity-70" />
 
       <div className="relative mx-auto max-w-6xl px-5">
         <div className="mx-auto max-w-2xl text-center">

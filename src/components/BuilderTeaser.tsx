@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Skyline from "./Skyline";
+import ViceBackdrop from "./ViceBackdrop";
 import SauceCup from "./SauceCup";
 import { FoodIcon } from "./FoodIcons";
 import { ArrowIcon } from "./Icons";
@@ -19,13 +20,10 @@ export default function BuilderTeaser() {
         <Link
           href="/la-carte#composer"
           data-cta="builder-teaser"
-          className="panel-hot card-sticker group relative block overflow-hidden focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-lemon"
+          className="card-sticker group relative block overflow-hidden focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-lemon"
         >
-          <Skyline className="pointer-events-none absolute inset-x-0 bottom-0 h-28 w-full opacity-30" />
-          <div
-            aria-hidden="true"
-            className="animate-drift-a pointer-events-none absolute -right-16 -top-20 h-64 w-64 rounded-full bg-lemon/25 blur-3xl"
-          />
+          <ViceBackdrop withSun={false} />
+          <Skyline className="pointer-events-none absolute inset-x-0 bottom-0 h-28 w-full opacity-70" />
 
           <div className="relative flex flex-col gap-7 p-7 sm:p-9 lg:flex-row lg:items-center lg:justify-between">
             <div className="max-w-lg">
