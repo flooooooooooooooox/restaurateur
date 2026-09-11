@@ -626,7 +626,16 @@ body {
   letter-spacing: 0.145em;
   /* Le logo est en lettres penchées : on incline l'ensemble du lockup. */
   transform: skewX(-9deg) scaleX(0.94);
-  filter: drop-shadow(0.022em 0.065em 0 #b30f59) drop-shadow(0.03em 0.11em 0.05em rgba(70, 5, 48, 0.5));
+  filter:
+    drop-shadow(0.013em 0.016em 0 #d4176f)
+    drop-shadow(0.013em 0.016em 0 #cc1569)
+    drop-shadow(0.013em 0.016em 0 #c31364)
+    drop-shadow(0.013em 0.016em 0 #ba115e)
+    drop-shadow(0.013em 0.016em 0 #b00f58)
+    drop-shadow(0.013em 0.016em 0 #a50d52)
+    drop-shadow(0.013em 0.016em 0 #9a0b4b)
+    drop-shadow(0.013em 0.016em 0 #8d0844)
+    drop-shadow(0 0.045em 0.05em rgba(52, 3, 34, 0.55));
   /* `.graffiti` pose un contour sombre qui, hérité, viendrait se glisser
      entre l'anneau blanc et le remplissage. Chaque couche pose le sien. */
   -webkit-text-stroke: 0;
@@ -682,7 +691,12 @@ body {
   bottom: 0;
   width: 108%;
   height: 0.34em;
-  filter: drop-shadow(0 0.05em 0 #c0135f);
+  filter:
+    drop-shadow(0.012em 0.015em 0 #cc1569)
+    drop-shadow(0.012em 0.015em 0 #bd1160)
+    drop-shadow(0.012em 0.015em 0 #ad0e56)
+    drop-shadow(0.012em 0.015em 0 #9c0a4c)
+    drop-shadow(0 0.03em 0.03em rgba(52, 3, 34, 0.5));
 }
 
 /* Le mot manuscrit penche déjà par construction : on réduit l'inclinaison
