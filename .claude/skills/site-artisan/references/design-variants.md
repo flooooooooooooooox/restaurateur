@@ -152,6 +152,16 @@ Les polices sont chargées via `next/font/google` (remplacer la paire Geist par 
 - brand `#d1a15a` · brand-dark `#af8140`
 - Typo : **Bitter** + **Inter** · Ambiance : minéral, doux, artisanal
 
+## V21 — Vice Néon · restauration rapide à forte identité, bars, concepts nocturnes
+- background `#0b0616` · foreground `#f6f0ff`
+- cream `#f6f0ff` · cream-alt `#171029`
+- navy `#110a22` · navy-light `#241541`
+- brand `#ff2e88` · brand-dark `#d0196e`
+- Accents supplémentaires : cyan `#22e0ff` · sun `#ffb23f`
+- Typo : **Outfit** (titres) + **Inter** (texte) · Ambiance : nocturne, néon, années 80
+- ⚠️ **Thème sombre** (la seule de la bibliothèque) : `cream` sert de teinte de texte,
+  `navy` de surface profonde. Halos magenta/cyan, grille rétro en perspective, titres néon.
+
 ---
 
 ## 📋 Suivi d'utilisation
@@ -178,6 +188,7 @@ Les polices sont chargées via `next/font/google` (remplacer la paire Geist par 
 | V18 Or Noir Luxe | ✅ libre | — | — |
 | V19 Vert Menthe Éco | ✅ libre | — | — |
 | V20 Sable Chaud | ✅ libre | — | — |
+| V21 Vice Néon | 🔒 utilisée | Crousty Vice (restaurant, Caen) | 2026-09 |
 
 > Règle : au démarrage, ne proposer que les variantes `✅ libre`. Après attribution,
 > passer la ligne à `🔒 utilisée` avec le nom du client et le mois, puis committer ce fichier.
