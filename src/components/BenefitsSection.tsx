@@ -1,5 +1,6 @@
 import { benefits } from "@/lib/site-data";
-import { SparkIcon } from "./Icons";
+import { ClockIcon, PinIcon, SparkIcon } from "./Icons";
+import { FlameIcon } from "./Icons";
 import Reveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
 
@@ -16,11 +17,13 @@ export default function BenefitsSection() {
         />
 
         <div className="mt-14 grid gap-5 sm:grid-cols-2">
-          {benefits.map((benefit, i) => (
+          {benefits.map((benefit, i) => {
+            const Icon = [SparkIcon, FlameIcon, ClockIcon, PinIcon][i % 4];
+            return (
             <Reveal key={benefit.title} delay={i * 90}>
               <article className="card-neon flex h-full gap-4 rounded-3xl p-6">
-                <span aria-hidden="true" className="mt-0.5 grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand/15 text-brand">
-                  <SparkIcon size={19} />
+                <span aria-hidden="true" className="mt-0.5 grid h-11 w-11 shrink-0 place-items-center rounded-xl border-[3px] border-ink bg-lemon text-ink">
+                  <Icon size={20} />
                 </span>
                 <div>
                   <h3 className="font-display text-lg font-bold tracking-tight">{benefit.title}</h3>
@@ -28,7 +31,8 @@ export default function BenefitsSection() {
                 </div>
               </article>
             </Reveal>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

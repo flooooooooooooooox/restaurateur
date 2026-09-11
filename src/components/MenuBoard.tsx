@@ -1,5 +1,6 @@
 import { menu, type MenuCategory } from "@/lib/site-data";
 import Reveal from "./Reveal";
+import { FoodIcon } from "./FoodIcons";
 
 function euros(price: number) {
   return `${price.toFixed(2).replace(".", ",")} €`;
@@ -22,13 +23,18 @@ function Category({ category, delay }: { category: MenuCategory; delay: number }
         className={`card-sticker h-full p-6 sm:p-7 ${TONE[category.id] ?? "panel-lemon"}`}
       >
         <div className="flex items-start justify-between gap-4">
-          <div>
-            <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-ink/55">
-              {category.kicker}
-            </p>
-            <h3 id={`menu-${category.id}`} className="graffiti mt-1.5 text-2xl">
-              {category.name}
-            </h3>
+          <div className="flex items-start gap-3">
+            <span className="grid h-14 w-14 shrink-0 place-items-center rounded-xl border-[3px] border-ink bg-white/70">
+              <FoodIcon name={category.icon} size={38} />
+            </span>
+            <div>
+              <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-ink/55">
+                {category.kicker}
+              </p>
+              <h3 id={`menu-${category.id}`} className="graffiti mt-1.5 text-2xl">
+                {category.name}
+              </h3>
+            </div>
           </div>
           {category.flatPrice !== undefined && (
             <span className="price-sticker price-sticker-hot shrink-0 text-lg">
@@ -39,7 +45,10 @@ function Category({ category, delay }: { category: MenuCategory; delay: number }
 
         <ul className="mt-5 space-y-3">
           {category.items.map((item) => (
-            <li key={`${item.name}-${item.note ?? item.qty ?? ""}`} className="flex items-baseline text-[15px]">
+            <li key={`${item.name}-${item.note ?? item.qty ?? ""}`} className="flex items-center text-[15px]">
+              {item.icon && (
+                <FoodIcon name={item.icon} size={30} className="mr-2.5 shrink-0" />
+              )}
               <span className="font-bold text-ink">
                 {item.name}
                 {item.qty && <span className="ml-1.5 font-extrabold text-ink/55">{item.qty}</span>}

@@ -18,6 +18,11 @@ Politique de confidentialité, 404 personnalisée.
   et desserts, avec total calculé en direct (`CroustyBuilder.tsx`)
 - Menu design en panneaux jaune/menthe façon affiche, stickers de prix
 - **Sauces dessinées en pots** (`SauceCup.tsx`), pas de pastilles de couleur
+- **Icônes produit dessinées** (`FoodIcons.tsx`) : riz, tenders, spicy, cordon bleu,
+  camembert, nuggets, onion rings, jalapeños, gratinage, boisson, tiramisu, cheesecake,
+  tarte au Daim — présentes sur la carte, dans le configurateur et dans le récapitulatif
+- **Skyline Vice City détaillée** (`Skyline.tsx`) : tours Art déco à retraits, fenêtres
+  allumées, antennes, enseignes néon et palmiers à frondes nervurées
 - Carte des sauces synthétique (7 sauces, pastilles de couleur + intensité)
 - Témoignages clients
 - Carte OpenStreetMap + accès (tram / à pied / voiture)

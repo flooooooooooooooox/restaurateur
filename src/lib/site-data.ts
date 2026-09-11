@@ -68,18 +68,21 @@ export const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination
 export const processSteps = [
   {
     step: "01",
+    icon: "rice" as const,
     title: "Choisissez votre base",
     description:
       "Tout commence par un riz blanc parfumé, cuit à la commande. C'est le terrain de jeu de votre Crousty.",
   },
   {
     step: "02",
+    icon: "tender" as const,
     title: "Ajoutez vos protéines",
     description:
       "Tenders, spicy tenders, cordon bleu, camembert ou nuggets : 2 € pièce, empilez ce qui vous fait envie.",
   },
   {
     step: "03",
+    icon: "cheese" as const,
     title: "Signez avec votre sauce",
     description:
       "Sept sauces signature, du sweet chili doux à l'algérienne. Ajoutez un side, une boisson, un dessert : la partie est complète.",
@@ -95,11 +98,22 @@ export const processSteps = [
  * pas été confirmé. Elles sont donc présentées SANS prix, comme sur l'ancien
  * site. Ne rien afficher tant que ce n'est pas tranché (cf. etat-du-site.md).
  */
-export type MenuItem = { name: string; price: number | null; note?: string; qty?: string };
+import type { FoodIconName } from "@/components/FoodIcons";
+
+export type MenuItem = {
+  name: string;
+  price: number | null;
+  note?: string;
+  qty?: string;
+  /** Icône produit affichée sur la carte et dans le configurateur. */
+  icon?: FoodIconName;
+};
 export type MenuCategory = {
   id: string;
   name: string;
   kicker: string;
+  /** Icône de la catégorie, affichée dans l'en-tête de la carte. */
+  icon: FoodIconName;
   /** Prix unique affiché en sticker quand tous les items sont au même tarif. */
   flatPrice?: number;
   items: MenuItem[];
@@ -110,63 +124,69 @@ export const menu: MenuCategory[] = [
     id: "formules",
     name: "Les Formules",
     kicker: "La base",
+    icon: "rice",
     items: [
-      { name: "Crousty seul", price: 5.9, note: "Taille S" },
-      { name: "Crousty seul", price: 7.9, note: "Taille M" },
-      { name: "Crousty en menu", price: 6.9, note: "Taille S" },
-      { name: "Crousty en menu", price: 8.9, note: "Taille M" },
-      { name: "Menu + Gratinage", price: 9.4 },
+      { name: "Crousty seul", price: 5.9, note: "Taille S", icon: "rice" },
+      { name: "Crousty seul", price: 7.9, note: "Taille M", icon: "rice" },
+      { name: "Crousty en menu", price: 6.9, note: "Taille S", icon: "drink" },
+      { name: "Crousty en menu", price: 8.9, note: "Taille M", icon: "drink" },
+      { name: "Menu + Gratinage", price: 9.4, icon: "cheese" },
     ],
   },
   {
     id: "viandes",
     name: "Les Viandes",
     kicker: "Le croustillant",
+    icon: "tender",
     flatPrice: 2,
     items: [
-      { name: "Tenders", price: 2 },
-      { name: "Spicy Tenders", price: 2 },
-      { name: "Cordon Bleu", price: 2 },
-      { name: "Camembert", price: 2 },
-      { name: "Nuggets", price: 2 },
+      { name: "Tenders", price: 2, icon: "tender" },
+      { name: "Spicy Tenders", price: 2, icon: "spicy" },
+      { name: "Cordon Bleu", price: 2, icon: "cordon" },
+      { name: "Camembert", price: 2, icon: "camembert" },
+      { name: "Nuggets", price: 2, icon: "nugget" },
     ],
   },
   {
     id: "toppings",
     name: "Les Toppings",
     kicker: "Le petit plus",
+    icon: "cheese",
     items: [
-      { name: "Jalapeños", price: 0.5 },
-      { name: "Gratinage", price: 1.5 },
+      { name: "Jalapeños", price: 0.5, icon: "jalapeno" },
+      { name: "Gratinage", price: 1.5, icon: "cheese" },
     ],
   },
   {
     id: "sides",
     name: "Les Sides",
     kicker: "À partager",
+    icon: "onion",
     items: [
-      { name: "Onion Rings", price: 2.9, qty: "x15" },
-      { name: "Camembert", price: 2.9, qty: "x4" },
-      { name: "Tenders", price: 2.9, qty: "x2" },
-      { name: "Spicy Tenders", price: 2.9, qty: "x2" },
-      { name: "Nuggets", price: 2.9, qty: "x4" },
-      { name: "Cordon Bleu", price: 2, qty: "x1" },
+      { name: "Onion Rings", price: 2.9, qty: "x15", icon: "onion" },
+      { name: "Camembert", price: 2.9, qty: "x4", icon: "camembert" },
+      { name: "Tenders", price: 2.9, qty: "x2", icon: "tender" },
+      { name: "Spicy Tenders", price: 2.9, qty: "x2", icon: "spicy" },
+      { name: "Nuggets", price: 2.9, qty: "x4", icon: "nugget" },
+      { name: "Cordon Bleu", price: 2, qty: "x1", icon: "cordon" },
     ],
   },
   {
     id: "boissons",
     name: "Les Boissons",
     kicker: "Au choix",
-    items: [{ name: "Boisson au choix", price: 1.5 }],
+    icon: "drink",
+    items: [{ name: "Boisson au choix", price: 1.5, icon: "drink" }],
   },
   {
     id: "desserts",
     name: "Les Desserts",
     kicker: "La fin de partie",
+    icon: "tiramisu",
     items: [
-      { name: "Tiramisu", price: 3.5 },
-      { name: "Cheesecake", price: 3.9 },
-      { name: "Tarte au Daim", price: 3.9 },
+      { name: "Tiramisu", price: 3.5, icon: "tiramisu" },
+      { name: "Cheesecake", price: 3.9, icon: "cheesecake" },
+      { name: "Tarte au Daim", price: 3.9, icon: "daim" },
     ],
   },
 ];

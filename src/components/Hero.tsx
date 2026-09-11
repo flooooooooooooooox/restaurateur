@@ -12,7 +12,7 @@ export default function Hero() {
         <div className="animate-drift-b absolute -right-20 top-10 h-[22rem] w-[22rem] rounded-full bg-lemon/20 blur-3xl" />
       </div>
       <Particles />
-      <Skyline className="pointer-events-none absolute inset-x-0 bottom-0 h-44 w-full opacity-60" />
+      <Skyline className="pointer-events-none absolute inset-x-0 bottom-0 h-56 w-full opacity-70" />
 
       <div className="relative mx-auto max-w-6xl px-5 pb-28 pt-16 sm:pb-36 sm:pt-24">
         <p className="animate-hero-in inline-flex rounded-full border-[3px] border-ink bg-mint px-4 py-1.5 text-xs font-extrabold uppercase tracking-[0.18em] text-ink" style={{ animationDelay: "0.05s" }}>

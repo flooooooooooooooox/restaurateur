@@ -4,14 +4,15 @@ import { useMemo, useState } from "react";
 import { menu, sauces, siteConfig } from "@/lib/site-data";
 import SauceCup from "./SauceCup";
 import { PhoneIcon } from "./Icons";
+import { FoodIcon, type FoodIconName } from "./FoodIcons";
 
 const euros = (n: number) => `${n.toFixed(2).replace(".", ",")} €`;
 
-const FORMULES = [
-  { id: "s-seul", label: "Crousty seul", size: "S", price: 5.9 },
-  { id: "m-seul", label: "Crousty seul", size: "M", price: 7.9 },
-  { id: "s-menu", label: "En menu", size: "S", price: 6.9 },
-  { id: "m-menu", label: "En menu", size: "M", price: 8.9 },
+const FORMULES: { id: string; label: string; size: string; price: number; icon: FoodIconName }[] = [
+  { id: "s-seul", label: "Crousty seul", size: "S", price: 5.9, icon: "rice" },
+  { id: "m-seul", label: "Crousty seul", size: "M", price: 7.9, icon: "rice" },
+  { id: "s-menu", label: "En menu", size: "S", price: 6.9, icon: "drink" },
+  { id: "m-menu", label: "En menu", size: "M", price: 8.9, icon: "drink" },
 ];
 
 const viandes = menu.find((c) => c.id === "viandes")?.items ?? [];
@@ -19,7 +20,7 @@ const toppings = menu.find((c) => c.id === "toppings")?.items ?? [];
 const sides = menu.find((c) => c.id === "sides")?.items ?? [];
 const desserts = menu.find((c) => c.id === "desserts")?.items ?? [];
 
-type Extra = { key: string; label: string; price: number };
+type Extra = { key: string; label: string; price: number; icon?: FoodIconName };
 
 function Step({ n, title, hint, children }: { n: number; title: string; hint?: string; children: React.ReactNode }) {
   return (
@@ -41,11 +42,13 @@ function Choice({
   selected,
   onClick,
   children,
+  icon,
   role = "checkbox",
 }: {
   selected: boolean;
   onClick: () => void;
   children: React.ReactNode;
+  icon?: FoodIconName;
   role?: "checkbox" | "radio";
 }) {
   return (
@@ -70,6 +73,7 @@ function Choice({
           </svg>
         )}
       </span>
+      {icon && <FoodIcon name={icon} size={28} className="shrink-0" />}
       {children}
     </button>
   );
@@ -90,14 +94,15 @@ export default function CroustyBuilder() {
 
   const extras: Extra[] = useMemo(() => {
     const all: Extra[] = [
-      ...viandes.map((i) => ({ key: `v:${i.name}`, label: i.name, price: i.price ?? 0 })),
-      ...toppings.map((i) => ({ key: `t:${i.name}`, label: i.name, price: i.price ?? 0 })),
+      ...viandes.map((i) => ({ key: `v:${i.name}`, label: i.name, price: i.price ?? 0, icon: i.icon })),
+      ...toppings.map((i) => ({ key: `t:${i.name}`, label: i.name, price: i.price ?? 0, icon: i.icon })),
       ...sides.map((i) => ({
         key: `s:${i.name}${i.qty ?? ""}`,
         label: `${i.name}${i.qty ? ` ${i.qty}` : ""}`,
         price: i.price ?? 0,
+        icon: i.icon,
       })),
-      ...desserts.map((i) => ({ key: `d:${i.name}`, label: i.name, price: i.price ?? 0 })),
+      ...desserts.map((i) => ({ key: `d:${i.name}`, label: i.name, price: i.price ?? 0, icon: i.icon })),
     ];
     return all.filter((e) => picked[e.key]);
   }, [picked]);
@@ -118,7 +123,7 @@ export default function CroustyBuilder() {
       {items.map((item) => {
         const key = `${prefix}:${item.name}${prefix === "s" ? item.qty ?? "" : ""}`;
         return (
-          <Choice key={key} selected={Boolean(picked[key])} onClick={() => toggle(key)}>
+          <Choice key={key} icon={item.icon} selected={Boolean(picked[key])} onClick={() => toggle(key)}>
             {item.name}
             {item.qty && <span className="opacity-70"> {item.qty}</span>}
             {item.price !== null && (
@@ -137,7 +142,7 @@ export default function CroustyBuilder() {
         <Step n={1} title="Ta formule" hint="Seul ou en menu, taille S ou M.">
           <div role="radiogroup" aria-label="Formule" className="flex flex-wrap gap-2.5">
             {FORMULES.map((f) => (
-              <Choice key={f.id} role="radio" selected={formule.id === f.id} onClick={() => setFormule(f)}>
+              <Choice key={f.id} role="radio" icon={f.icon} selected={formule.id === f.id} onClick={() => setFormule(f)}>
                 {f.label}
                 <span className="ml-1 rounded-md border-2 border-ink px-1.5 text-xs">{f.size}</span>
                 <span className="ml-1 tabular-nums opacity-80">{euros(f.price)}</span>
@@ -186,7 +191,8 @@ export default function CroustyBuilder() {
 
           <dl className="mt-5 space-y-2 text-sm">
             <div className="flex items-baseline gap-2">
-              <dt className="font-bold">
+              <dt className="flex items-center gap-1.5 font-bold">
+                <FoodIcon name={formule.icon} size={22} className="shrink-0" />
                 {formule.label} <span className="opacity-80">taille {formule.size}</span>
               </dt>
               <span aria-hidden="true" className="menu-leader !border-white/40" />
@@ -203,7 +209,10 @@ export default function CroustyBuilder() {
 
             {extras.map((e) => (
               <div key={e.key} className="flex items-baseline gap-2">
-                <dt className="font-bold">{e.label}</dt>
+                <dt className="flex items-center gap-1.5 font-bold">
+                  {e.icon && <FoodIcon name={e.icon} size={22} className="shrink-0" />}
+                  {e.label}
+                </dt>
                 <span aria-hidden="true" className="menu-leader !border-white/40" />
                 <dd className="shrink-0 font-bold tabular-nums">{euros(e.price)}</dd>
               </div>
