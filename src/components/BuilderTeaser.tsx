@@ -1,80 +1,60 @@
 import Link from "next/link";
 import Skyline from "./Skyline";
 import ViceBackdrop from "./ViceBackdrop";
-import SauceCup from "./SauceCup";
-import { FoodIcon } from "./FoodIcons";
 import { ArrowIcon } from "./Icons";
-import { sauces, siteConfig } from "@/lib/site-data";
 
-const PREVIEW_ICONS = ["tender", "cordon", "nugget", "onion", "drink"] as const;
+/** Les tarifs d'appel, affichés à côté du bouton. */
+const TARIFS = [
+  { label: "Crousty seul", value: "dès 5,90 €" },
+  { label: "En menu", value: "dès 6,90 €" },
+  { label: "Chaque viande", value: "2,00 €" },
+  { label: "Sides", value: "2,90 €" },
+];
 
-/**
- * Accroche compacte et entièrement cliquable vers la carte interactive.
- * Le configurateur lui-même vit sur /la-carte : ici on ne montre que
- * de quoi donner envie de cliquer.
- */
+/** Bandeau d'accroche vers la carte interactive. */
 export default function BuilderTeaser() {
   return (
     <section className="py-14 sm:py-16">
       <div className="mx-auto max-w-6xl px-5">
-        <Link
-          href="/la-carte#composer"
-          data-cta="builder-teaser"
-          className="card-sticker group relative block overflow-hidden focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-lemon"
-        >
+        <div className="card-sticker relative overflow-hidden">
           <ViceBackdrop withSun={false} />
-          <Skyline className="pointer-events-none absolute inset-x-0 bottom-0 h-28 w-full opacity-70" />
+          <Skyline className="pointer-events-none absolute inset-x-0 bottom-0 h-16 w-full opacity-35" />
 
-          <div className="relative flex flex-col gap-7 p-7 sm:p-9 lg:flex-row lg:items-center lg:justify-between">
-            <div className="max-w-lg">
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-[linear-gradient(to_right,rgba(30,6,48,0.5),rgba(30,6,48,0.3)_45%,rgba(30,6,48,0.6))]"
+          />
+
+          <div className="relative flex flex-col gap-6 p-7 sm:p-8 lg:flex-row lg:items-center lg:justify-between">
+            <div>
               <p className="text-[11px] font-extrabold uppercase tracking-[0.28em] text-lemon">
                 La carte interactive
               </p>
-              <h2 className="graffiti mt-3 text-3xl sm:text-4xl">Compose ton Crousty</h2>
-              <p className="mt-3 text-sm font-medium leading-relaxed text-white/85 sm:text-base">
-                Formule, viandes, sauce, sides&nbsp;: coche ce que tu veux, le total s&apos;affiche
-                en direct. Tu sais ce que tu paies avant de passer la porte.
-              </p>
-
-              <span className="btn btn-primary mt-6 group-hover:-translate-y-0.5">
-                Composer mon Crousty
-                <ArrowIcon size={17} className="transition-transform group-hover:translate-x-1" />
-              </span>
+              <h2 className="mt-2.5">
+                <span className="graffiti block text-3xl sm:text-4xl">Compose</span>
+                <span className="script mt-1 block text-2xl sm:text-3xl">ton Crousty</span>
+              </h2>
             </div>
 
-            {/* Aperçu : les ingrédients et les sauces, en vrac */}
-            <div className="shrink-0">
-              <div className="flex flex-wrap items-center gap-2.5 lg:justify-end">
-                {PREVIEW_ICONS.map((name, i) => (
-                  <span
-                    key={name}
-                    className="grid h-14 w-14 place-items-center rounded-2xl border-[3px] border-ink bg-white/90 transition-transform duration-300 group-hover:-translate-y-1"
-                    style={{ transitionDelay: `${i * 45}ms`, rotate: `${(i % 2 ? 1 : -1) * 3}deg` }}
-                  >
-                    <FoodIcon name={name} size={34} />
-                  </span>
-                ))}
-              </div>
+            {/* Le bouton, et les tarifs juste à côté */}
+            <div className="flex flex-wrap items-center gap-5">
+              <Link href="/la-carte#composer" className="btn btn-primary" data-cta="builder-teaser">
+                Composer mon Crousty <ArrowIcon size={17} />
+              </Link>
 
-              <div className="mt-3 flex flex-wrap items-center gap-1.5 lg:justify-end">
-                {sauces.map((sauce, i) => (
-                  <span
-                    key={sauce.name}
-                    className="transition-transform duration-300 group-hover:-translate-y-0.5"
-                    style={{ transitionDelay: `${i * 35}ms` }}
-                    title={sauce.name}
-                  >
-                    <SauceCup sauce={sauce.sauce} top={sauce.top} size={38} />
-                  </span>
+              <dl className="flex flex-wrap gap-x-5 gap-y-2 text-sm">
+                {TARIFS.map((t) => (
+                  <div key={t.label} className="leading-tight">
+                    <dt className="text-[11px] font-semibold uppercase tracking-wide text-white/70">
+                      {t.label}
+                    </dt>
+                    <dd className="font-display font-extrabold text-lemon [text-shadow:0_1px_6px_rgba(30,6,48,0.9)]">{t.value}</dd>
+                  </div>
                 ))}
-              </div>
-
-              <p className="mt-4 text-right text-xs font-extrabold uppercase tracking-wide text-lemon">
-                Dès {siteConfig.priceFrom} · 7 sauces incluses
-              </p>
+              </dl>
             </div>
           </div>
-        </Link>
+        </div>
       </div>
     </section>
   );
