@@ -9,7 +9,7 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import LocationSection from "@/components/LocationSection";
 import FaqSection from "@/components/FaqSection";
 import CtaSection from "@/components/CtaSection";
-import BuilderSection from "@/components/BuilderSection";
+import BuilderTeaser from "@/components/BuilderTeaser";
 import Gallery from "@/components/Gallery";
 import JsonLd from "@/components/JsonLd";
 import Reveal from "@/components/Reveal";
@@ -46,7 +46,7 @@ export default function HomePage() {
       </section>
 
       <ProcessSection />
-      <BuilderSection />
+      <BuilderTeaser />
 
       {/* Aperçu de la carte */}
       <section className="py-20">
