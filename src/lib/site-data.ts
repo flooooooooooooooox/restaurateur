@@ -213,13 +213,43 @@ export const sauces = [
  *
  * Formats conseillés : WebP, 1600 px de large max, moins de 300 Ko.
  */
-export type Photo = { src: string; alt: string; wide?: boolean };
+export type Photo = {
+  src: string;
+  alt: string;
+  /** Occupe deux colonnes dans la galerie. */
+  wide?: boolean;
+  /** Format portrait (plus haut que large). */
+  tall?: boolean;
+  /** Légère inclinaison, pour casser la régularité de la grille. */
+  tilt?: number;
+  /** Décalage vertical en px, pour désaligner la rangée. */
+  offset?: number;
+};
 
+/**
+ * LA photo d'accueil : la box de riz en gros plan, affichée dans le hero
+ * dès l'arrivée sur le site. Tant qu'elle est absente, le hero reste
+ * en pleine largeur sans emplacement vide.
+ */
+export const heroPhoto: Photo | null = null;
+// export const heroPhoto: Photo | null = {
+//   src: "/images/crousty-plat.webp",
+//   alt: "Box Crousty Vice : riz blanc, poulet croustillant, oignons frits et sauce",
+// };
+
+/**
+ * Galerie photo, volontairement désalignée : tailles, inclinaisons et décalages
+ * différents pour casser la grille. Déposez les fichiers dans `public/images/`
+ * puis décommentez les lignes correspondantes — la section apparaît dès qu'il y
+ * a une photo, et reste masquée sinon.
+ *
+ * Formats conseillés : WebP, 1600 px de large max, moins de 300 Ko.
+ */
 export const gallery: Photo[] = [
-  // { src: "/images/crousty-plat.webp", alt: "Box Crousty Vice : riz, poulet croustillant et sauce", wide: true },
-  // { src: "/images/salle-bornes.webp", alt: "La salle de Crousty Vice et ses bornes de commande, murs roses et néons" },
-  // { src: "/images/frigo-boissons.webp", alt: "Le réfrigérateur à boissons de Crousty Vice" },
-  // { src: "/images/crousty-main.webp", alt: "Une box Crousty Vice servie à emporter" },
+  // { src: "/images/salle-bornes.webp", alt: "La salle de Crousty Vice : murs roses, néons et borne de commande", tall: true, tilt: -1.5 },
+  // { src: "/images/frigo-boissons.webp", alt: "Le réfrigérateur à boissons de Crousty Vice", tilt: 2, offset: 28 },
+  // { src: "/images/crousty-main.webp", alt: "Une box Crousty Vice servie à emporter, tenue à la main", tilt: -2 },
+  // { src: "/images/salle-ecran.webp", alt: "Écrans et enseigne Crousty Vice dans la salle", wide: true, tilt: 1, offset: 16 },
 ];
 
 /** Affiches de la carte (visuels fournis par le restaurant). */

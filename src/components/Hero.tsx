@@ -1,7 +1,8 @@
 import Link from "next/link";
+import Image from "next/image";
 import Particles from "./Particles";
 import Skyline from "./Skyline";
-import { siteConfig } from "@/lib/site-data";
+import { heroPhoto, siteConfig } from "@/lib/site-data";
 import { ArrowIcon, ClockIcon, PhoneIcon, PinIcon } from "./Icons";
 
 export default function Hero() {
@@ -14,7 +15,10 @@ export default function Hero() {
       <Particles />
       <Skyline className="pointer-events-none absolute inset-x-0 bottom-0 h-56 w-full opacity-70" />
 
-      <div className="relative mx-auto max-w-6xl px-5 pb-28 pt-16 sm:pb-36 sm:pt-24">
+      <div className={`relative mx-auto max-w-6xl px-5 pb-28 pt-16 sm:pb-36 sm:pt-24 ${
+        heroPhoto ? "grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]" : ""
+      }`}>
+        <div>
         <p className="animate-hero-in inline-flex rounded-full border-[3px] border-ink bg-mint px-4 py-1.5 text-xs font-extrabold uppercase tracking-[0.18em] text-ink" style={{ animationDelay: "0.05s" }}>
           {siteConfig.street} · {siteConfig.city}
         </p>
@@ -53,6 +57,24 @@ export default function Hero() {
             Dès {siteConfig.priceFrom} · sur place ou à emporter
           </li>
         </ul>
+        </div>
+
+        {heroPhoto && (
+          <div className="animate-hero-in relative" style={{ animationDelay: "0.34s" }}>
+            <div aria-hidden="true" className="animate-soft-float absolute -inset-4 rounded-[2rem] bg-lemon/25 blur-2xl" />
+            <figure className="card-sticker animate-soft-float relative overflow-hidden rotate-[-2deg] bg-navy-light">
+              <Image
+                src={heroPhoto.src}
+                alt={heroPhoto.alt}
+                width={1200}
+                height={900}
+                priority
+                sizes="(max-width: 1024px) 100vw, 46vw"
+                className="aspect-[4/3] w-full object-cover"
+              />
+            </figure>
+          </div>
+        )}
       </div>
     </section>
   );
