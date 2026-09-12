@@ -63,12 +63,16 @@ export default function Hero() {
 
         {heroPhoto && (
           <div className="animate-hero-in relative mx-auto w-full max-w-[420px]" style={{ animationDelay: "0.34s" }}>
-            <div aria-hidden="true" className="absolute -inset-4 rounded-[2.5rem] bg-lemon/30 blur-2xl" />
-            {/* Étiquette « polaroid » qui casse le cadre */}
-            <span className="price-sticker price-sticker-mint absolute -left-4 -top-4 z-10 text-sm sm:-left-6">
-              Ton Crousty
-            </span>
-            <figure className="card-sticker animate-soft-float relative overflow-hidden rotate-[-2.5deg] bg-navy-light">
+            {/* Le traitement autocollant — contour noir épais, ombre dure
+                décalée, inclinaison, halo jaune — convient aux panneaux de la
+                carte, mais appliqué à une photo il fait bricolage, et le halo
+                déteignait sur les bords. Ici : cadre net, ombre profonde et
+                diffuse, fin liseré clair. */}
+            <div
+              aria-hidden="true"
+              className="absolute -inset-6 rounded-[3rem] bg-[radial-gradient(closest-side,rgba(43,10,74,0.55),transparent)]"
+            />
+            <figure className="relative overflow-hidden rounded-[1.75rem] bg-navy-light shadow-[0_30px_60px_-20px_rgba(30,4,44,0.75),0_10px_24px_-12px_rgba(30,4,44,0.6)] ring-1 ring-white/20">
               <Image
                 src={heroPhoto.src}
                 alt={heroPhoto.alt}
@@ -78,6 +82,17 @@ export default function Hero() {
                 quality={95}
                 sizes="(max-width: 1024px) 80vw, 420px"
                 className="w-full object-cover"
+              />
+              {/* Léger assombrissement du bas : la photo se termine en douceur
+                  au lieu d'être tranchée net. */}
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/35 to-transparent"
+              />
+              {/* Reflet de bord, qui donne l'épaisseur du cadre */}
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 rounded-[1.75rem] ring-1 ring-inset ring-white/10"
               />
             </figure>
           </div>
