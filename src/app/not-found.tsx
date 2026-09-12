@@ -5,7 +5,7 @@ import { siteConfig } from "@/lib/site-data";
 export default function NotFound() {
   return (
     <section className="relative overflow-hidden">
-      <div aria-hidden="true" className="animate-drift-a pointer-events-none absolute -left-20 -top-24 h-80 w-80 rounded-full bg-brand/25 blur-3xl" />
+      <div aria-hidden="true" className="animate-drift-a pointer-events-none absolute -left-20 -top-24 h-80 w-80 rounded-full bg-brand/25 blur-2xl" />
       <div aria-hidden="true" className="retro-grid pointer-events-none absolute inset-x-0 bottom-0 h-56" />
       <div className="relative mx-auto flex min-h-[60vh] max-w-2xl flex-col items-center justify-center px-5 py-24 text-center">
         <p className="font-display text-6xl font-black neon-pink sm:text-8xl">404</p>

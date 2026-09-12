@@ -6,41 +6,10 @@
 
 /** Étoiles fixes (positions déterministes, pas de rendu aléatoire). */
 const STARS = [
-  [6, 12, 1.6], [14, 26, 1.1], [23, 8, 1.9], [31, 19, 1.2], [38, 6, 1.4],
-  [46, 22, 1], [54, 11, 1.7], [61, 27, 1.2], [69, 9, 1.5], [77, 20, 1.1],
-  [84, 7, 1.8], [91, 24, 1.3], [18, 38, 1], [43, 35, 1.2], [72, 37, 1.4],
-  [96, 14, 1.2], [3, 30, 1.3], [58, 32, 1],
+  [6, 12, 1.6], [23, 8, 1.9], [38, 6, 1.4], [54, 11, 1.7],
+  [69, 9, 1.5], [84, 7, 1.8], [43, 35, 1.2], [91, 24, 1.3],
 ] as const;
 
-
-/** Rayons de soleil : wedges alternés rayonnant depuis l'horizon. */
-function Sunburst({ x }: { x: number }) {
-  const rays = [];
-  const count = 28;
-  for (let i = 0; i < count; i += 1) {
-    // Un rayon sur deux, pour l'alternance claire/fond
-    if (i % 2) continue;
-    const a0 = (i / count) * Math.PI * 2;
-    const a1 = ((i + 1) / count) * Math.PI * 2;
-    const r = 900;
-    rays.push(
-      <path
-        key={i}
-        d={`M0 0 L${Math.cos(a0) * r} ${Math.sin(a0) * r} L${Math.cos(a1) * r} ${Math.sin(a1) * r} Z`}
-        fill="#ffffff"
-      />
-    );
-  }
-  return (
-    <svg
-      viewBox="-900 -900 1800 1800"
-      className="absolute top-[16%] h-[150rem] w-[150rem] -translate-x-1/2 -translate-y-1/2 opacity-[0.07] mix-blend-screen"
-      style={{ left: `${x}%` }}
-    >
-      <g className="animate-sunburst">{rays}</g>
-    </svg>
-  );
-}
 
 export default function ViceBackdrop({
   withSun = true,
@@ -73,8 +42,13 @@ export default function ViceBackdrop({
         ))}
       </div>
 
-      {/* Rayons de soleil, derrière le disque */}
-      {withSun && <Sunburst x={sunX} />}
+      {/* Rayons de soleil : dégradé conique, sans nœud ni calque fusionné */}
+      {withSun && (
+        <div
+          className="vice-sunburst absolute top-[16%] h-[120rem] w-[120rem] -translate-x-1/2 -translate-y-1/2"
+          style={{ left: `${sunX}%` }}
+        />
+      )}
 
       {/* Le soleil à bandes : la signature Vice City */}
       {withSun && (

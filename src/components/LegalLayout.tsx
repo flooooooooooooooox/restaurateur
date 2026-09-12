@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 export default function LegalLayout({ title, intro, children }: { title: string; intro?: string; children: ReactNode }) {
   return (
     <section className="relative overflow-hidden py-16 sm:py-20">
-      <div aria-hidden="true" className="animate-drift-a pointer-events-none absolute -left-24 -top-28 h-72 w-72 rounded-full bg-brand/20 blur-3xl" />
+      <div aria-hidden="true" className="animate-drift-a pointer-events-none absolute -left-24 -top-28 h-72 w-72 rounded-full bg-brand/20 blur-2xl" />
       <div className="relative mx-auto max-w-3xl px-5">
         <h1 className="font-display text-3xl font-black tracking-tight sm:text-4xl">{title}</h1>
         {intro && <p className="mt-4 text-base leading-relaxed text-cream/65">{intro}</p>}

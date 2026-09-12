@@ -155,6 +155,33 @@ Rien n'est inventé. À trancher avant publication.
 
 ---
 
+## ⚡ Performance
+
+Mesuré au défilement sur la page d'accueil, en 1440 px :
+
+| | Avant | Après |
+|---|---|---|
+| Nœuds DOM | 2 552 | 1 142 |
+| dont nœuds SVG | 1 655 | 279 |
+| Temps par image (médiane) | 27 ms (≈ 37 i/s) | **16,6 ms (60 i/s)** |
+| Pic le plus lent (p95) | 45 ms | 19 ms |
+| Éléments flous animés | 6 | 3 |
+
+Ce qui coûtait cher, et ce qui a été fait :
+- **La skyline en SVG inline** créait près de 360 nœuds par instance (les fenêtres
+  allumées surtout), soit plus de 1 000 nœuds pour les trois skylines. Elle est passée en
+  **image de fond** (`public/images/skyline.svg`, régénérable via `scripts/gen-skyline.mjs`) :
+  le navigateur la rastérise une fois et la réutilise.
+- **Les rayons de soleil** étaient un SVG de 300 % de large, en `mix-blend-mode` et animé —
+  un calque énorme recomposé en continu. Remplacés par un **dégradé conique CSS**.
+- **Les scanlines** en `mix-blend-mode: multiply` sur toute la section : remplacées par un
+  aplat translucide, même rendu sans fusion de calques.
+- **`background-attachment: fixed`** sur le `body` forçait un repaint du fond à chaque
+  défilement : supprimé.
+- **Halos flous** réduits de 6 à 3, et rayon ramené de 64 px à 40 px.
+
+> ⚠️ Si la skyline est modifiée, regénérer le SVG avec `node scripts/gen-skyline.mjs`.
+
 ## Commandes
 ```bash
 npm run dev     # développement

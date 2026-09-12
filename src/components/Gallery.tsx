@@ -13,7 +13,7 @@ export default function Gallery() {
 
   return (
     <section className="relative overflow-hidden py-20">
-      <div aria-hidden="true" className="animate-drift-a pointer-events-none absolute -left-24 top-10 h-80 w-80 rounded-full bg-hot/25 blur-3xl" />
+      <div aria-hidden="true" className="animate-drift-a pointer-events-none absolute -left-24 top-10 h-80 w-80 rounded-full bg-hot/25 blur-2xl" />
       <div className="relative mx-auto max-w-6xl px-5">
         <SectionHeading
           eyebrow="En images"

@@ -26,8 +26,8 @@ export default function ConceptPage() {
       />
 
       <section className="relative overflow-hidden py-16 sm:py-20">
-        <div aria-hidden="true" className="animate-drift-b pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-cyan/20 blur-3xl" />
-        <div aria-hidden="true" className="animate-drift-a pointer-events-none absolute -left-16 top-10 h-72 w-72 rounded-full bg-brand/25 blur-3xl" />
+        <div aria-hidden="true" className="animate-drift-b pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-cyan/20 blur-2xl" />
+        <div aria-hidden="true" className="animate-drift-a pointer-events-none absolute -left-16 top-10 h-72 w-72 rounded-full bg-brand/25 blur-2xl" />
         <div className="relative mx-auto max-w-6xl px-5">
           <p className="text-xs font-bold uppercase tracking-[0.28em] text-cyan">Le concept</p>
           <h1 className="mt-4 max-w-3xl font-display text-4xl font-black leading-[1.08] tracking-tight sm:text-5xl">

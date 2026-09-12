@@ -5,14 +5,11 @@ import Skyline from "./Skyline";
 import { heroPhoto, siteConfig } from "@/lib/site-data";
 import { ArrowIcon, ClockIcon, PhoneIcon, PinIcon } from "./Icons";
 import GoogleRating from "./GoogleRating";
+import MapsLink from "./MapsLink";
 
 export default function Hero() {
   return (
     <section className="panel-hot relative overflow-hidden">
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        <div className="animate-drift-a absolute -left-24 -top-24 h-[26rem] w-[26rem] rounded-full bg-white/15 blur-3xl" />
-        <div className="animate-drift-b absolute -right-20 top-10 h-[22rem] w-[22rem] rounded-full bg-lemon/20 blur-3xl" />
-      </div>
       <Particles />
       <Skyline className="pointer-events-none absolute inset-x-0 bottom-0 h-56 w-full opacity-70" />
 
@@ -20,9 +17,9 @@ export default function Hero() {
         heroPhoto ? "grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]" : ""
       }`}>
         <div>
-        <p className="animate-hero-in inline-flex rounded-full border-[3px] border-ink bg-mint px-4 py-1.5 text-xs font-extrabold uppercase tracking-[0.18em] text-ink" style={{ animationDelay: "0.05s" }}>
-          {siteConfig.street} · {siteConfig.city}
-        </p>
+        <div className="animate-hero-in" style={{ animationDelay: "0.05s" }}>
+          <MapsLink className="inline-flex cursor-pointer rounded-full border-[3px] border-ink bg-mint px-4 py-1.5 text-xs font-extrabold uppercase tracking-[0.18em] text-ink transition-transform hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lemon" />
+        </div>
 
         <h1 className="animate-hero-in mt-6 max-w-3xl" style={{ animationDelay: "0.15s" }}>
           <span className="graffiti block text-5xl sm:text-7xl">Compose</span>
@@ -66,7 +63,7 @@ export default function Hero() {
 
         {heroPhoto && (
           <div className="animate-hero-in relative mx-auto w-full max-w-[340px]" style={{ animationDelay: "0.34s" }}>
-            <div aria-hidden="true" className="animate-soft-float absolute -inset-5 rounded-[2.5rem] bg-lemon/30 blur-2xl" />
+            <div aria-hidden="true" className="absolute -inset-4 rounded-[2.5rem] bg-lemon/30 blur-2xl" />
             {/* Étiquette « polaroid » qui casse le cadre */}
             <span className="price-sticker price-sticker-mint absolute -left-4 -top-4 z-10 text-sm sm:-left-6">
               Ton Crousty

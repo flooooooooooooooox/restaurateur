@@ -56,7 +56,6 @@ body {
     radial-gradient(ellipse 80% 50% at 15% -5%, rgba(255, 46, 136, 0.18), transparent 60%),
     radial-gradient(ellipse 70% 50% at 95% 10%, rgba(34, 224, 255, 0.13), transparent 60%),
     var(--background);
-  background-attachment: fixed;
   color: var(--foreground);
   -webkit-font-smoothing: antialiased;
 }
@@ -548,8 +547,7 @@ body {
     transparent 1px,
     transparent 3px
   );
-  mix-blend-mode: multiply;
-  opacity: 0.5;
+  opacity: 0.35;
 }
 
 /* Rotation très lente des rayons de soleil */
@@ -568,3 +566,17 @@ body {
 
 /* ---------- Bannière du hero ---------- */
 
+
+/* Rayons de soleil en dégradé conique : aucun nœud, une seule passe de peinture. */
+.vice-sunburst {
+  background: repeating-conic-gradient(
+    rgba(255, 255, 255, 0.075) 0deg 6.42deg,
+    transparent 6.42deg 12.85deg
+  );
+  opacity: 0.9;
+  animation: sunburst-spin 240s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vice-sunburst { animation: none; }
+}
