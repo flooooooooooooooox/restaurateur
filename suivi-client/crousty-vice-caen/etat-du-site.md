@@ -81,73 +81,73 @@ pouvoir accéder à l'ensemble des avis, y compris les négatifs.
 
 ---
 
-## 🔴 Bloquants avant publication
+## 🔴 Bloquants avant publication — conformité légale
 
-Ces champs sont en `[à compléter]`, visibles en surbrillance sur `/mentions-legales` :
+Le site est **conforme sur tout ce qui dépend de la technique**. Ce qui manque relève
+d'informations que seul le client peut fournir. Elles s'affichent en surbrillance
+`[à compléter]` sur les pages concernées.
 
-| Champ | Où |
+### Mentions légales (loi LCEN, art. 6-III) — 9 champs manquants
+| Champ | Clé |
 |---|---|
 | Dénomination sociale | `legalMentions.companyName` |
-| Forme juridique · capital social | `legalMentions.legalForm` / `.capital` |
-| SIRET · SIREN · RCS | `legalMentions.siret` / `.siren` / `.rcsOrRm` |
-| N° TVA intracommunautaire | `legalMentions.vatNumber` |
+| Forme juridique | `legalMentions.legalForm` |
+| Capital social (si société) | `legalMentions.capital` |
+| SIRET | `legalMentions.siret` |
+| RCS + ville | `legalMentions.rcsOrRm` |
+| N° TVA intracommunautaire (ou « TVA non applicable, art. 293 B du CGI ») | `legalMentions.vatNumber` |
+| Email de contact | `siteConfig.email` |
 | Directeur de la publication | `legalMentions.publicationDirector` |
 | Assurance RC professionnelle | `legalMentions.insurance` |
-| Médiateur de la consommation | `legalMentions.consumerMediator` |
-| Email de contact | `siteConfig.email` |
 
-Également à faire avant la mise en ligne :
-- **`siteConfig.url`** : remplacer `https://www.croustyvice-caen.fr` par le vrai domaine
-  (sinon canonicals, sitemap et GEO pointent dans le vide).
-- **Logo** : le logo actuel est un logo texte provisoire (`src/components/Logo.tsx` + `src/app/icon.tsx`).
-  À remplacer par le vrai logo Vice City du client.
-- **Photos — 4 en ligne, en pleine définition.** Le client a fourni des originaux propres
-  qui remplacent les découpes basse définition du montage initial :
-
-  | Fichier | Dimensions | Emplacement |
-  |---|---|---|
-  | `crousty-main.webp` | 759 × 1349 | Hero |
-  | `salle.webp` | 1280 × 719 | Galerie, pleine largeur (nouvelle) |
-  | `borne.webp` | 1080 × 1188 | Galerie, portrait |
-  | `boissons.webp` | 1080 × 893 | Galerie |
-
-  Converties en WebP qualité 82, entre 62 et 96 Ko pièce. Les bridages d'affichage
-  posés du temps des images en 228 px sont levés : la photo du hero passe de 340 à
-  420 px et la galerie occupe de nouveau toute la largeur.
-
-  Manquent encore : les **2 affiches** de la carte (tableau `posters`, prêt) et le **logo
-  en fichier** (PNG transparent ou SVG) — voir `public/images/README.md`.
-
-## 🟡 À faire confirmer par le client
-
-### Prix relevés sur les affiches — à valider ligne à ligne
-Certains chiffres des affiches sont peu lisibles. Voici ce qui est actuellement en ligne :
-
-| Ligne | Prix retenu | Confiance |
+### Obligations propres à la restauration — 3 champs manquants
+| Obligation | Texte | Clé |
 |---|---|---|
-| Crousty seul S / M | 5,90 € / 7,90 € | bonne |
-| Crousty en menu S / M | 6,90 € / 8,90 € | bonne |
-| Menu + Gratinage | 9,40 € | bonne |
-| Viandes (tenders, spicy, cordon bleu, camembert, nuggets) | 2,00 € pièce | bonne |
-| Jalapeños / Gratinage | 0,50 € / 1,50 € | bonne |
-| Onion Rings x15 · Camembert x4 · Tenders x2 · Spicy Tenders x2 · Nuggets x4 | 2,90 € | **à vérifier** |
-| Cordon Bleu x1 | 2,00 € | **à vérifier** |
-| Boisson au choix | 1,50 € | bonne |
-| Tiramisu / Cheesecake / Tarte au Daim | 3,50 € / 3,90 € / 3,90 € | bonne |
+| **Allergènes** — où l'information écrite est consultable sur place | Règlement (UE) 1169/2011, décret 2015-447 | `legalMentions.allergenesLieu` |
+| **Origine des viandes** (bœuf, porc, mouton, volaille) | Décrets 2002-1465 et 2022-65 | `legalMentions.origineViandes` |
+| **Médiateur de la consommation** — nom, adresse, site | Art. L.616-1 et R.616-1 Code conso | `legalMentions.consumerMediator` |
 
-### 🔴 Prix des sauces — non tranché
-L'affiche porte un badge « 2 € » à droite de la ligne VIANDES **et** un autre à droite de
-la ligne SAUCES. Impossible de savoir si les sauces sont payantes.
+> ⚠️ L'obligation sur les **allergènes** n'est pas satisfaite par un « sur demande ».
+> Le décret impose une information **écrite**, accessible, et d'indiquer au client **où** la
+> consulter. Le site le fait déjà sur la page de la carte et dans les mentions légales, mais
+> le lieu exact doit être renseigné.
 
-**Décision prise en attendant** : les sauces sont affichées **sans prix** (comme sur l'ancien
-site) et ne sont pas comptées dans le total du configurateur, qui le mentionne explicitement.
-Rien n'est inventé. À trancher avant publication.
-- **Année de création** (`foundingYear`) — renforce le référencement et les citations IA.
-- **Allergènes** : actuellement « disponibles sur demande ». Les publier serait un plus.
-- **Fiche Google Business** : le plus gros levier restant pour être trouvé et cité.
-- **Instagram / Facebook**, commande en ligne ou livraison si pertinent.
+### Autre bloquant
+- **`siteConfig.url`** : remplacer le domaine provisoire par le vrai, sinon canonical,
+  sitemap et données structurées pointent dans le vide.
+- **`siteConfig.googleReviewsUrl`** : sans le lien de la fiche, la note s'affiche sans être
+  vérifiable — et la sélection ne montrant que des avis positifs, le lien est nécessaire.
 
----
+## ✅ Conformité déjà en place (vérifiée, pas supposée)
+
+Audit des requêtes réseau sur les 6 pages, défilement complet :
+
+| Point | État |
+|---|---|
+| Cookies déposés | **aucun** |
+| `localStorage` / `sessionStorage` | **aucun** |
+| Mesure d'audience, traceur publicitaire, bouton social | **aucun** |
+| Polices | **auto-hébergées** — aucune requête vers Google Fonts |
+| Services tiers contactés | **un seul** : tuiles OpenStreetMap |
+| Bandeau de consentement | **non requis** (art. 82 loi Informatique et Libertés : pas de traceur non essentiel) |
+
+- **Pages légales** accessibles depuis le pied de page de toutes les pages, en `noindex`.
+- **RGPD** : responsable du traitement, absence de collecte, journaux de l'hébergeur
+  (finalité, base légale, destinataire, durée), carte OpenStreetMap, **avis Google reproduits**
+  (données de tiers — base légale, source, droit de retrait sans justification), liens sortants,
+  **transferts hors UE** (hébergeur américain), droits complets dont directives post-mortem,
+  réclamation CNIL.
+- **Carte** : chargée seulement à l'approche de l'écran — aucune requête vers OpenStreetMap si
+  le visiteur ne descend pas jusqu'à elle.
+- **Sortie vers Google Maps** précédée d'une confirmation : pas de redirection à l'insu du visiteur.
+- **Prix** : affichés TTC, service compris (arrêté du 27 mars 1987), avec la mention que seuls
+  les prix affichés sur place font foi.
+- **Pas de CGV** : le site ne vend rien, il renvoie vers Uber Eats dont les conditions
+  s'appliquent — c'est indiqué.
+- **Pas de mention « fait maison »** revendiquée (décret 2014-797) : rien à justifier.
+- **Registre public d'accessibilité** de l'établissement mentionné (décret 2017-431).
+- **Pas de balisage d'avis** (`aggregateRating` / `Review`) : interdit par Google pour les
+  avis auto-hébergés. Vérifié à zéro occurrence.
 
 ## ⚡ Performance
 

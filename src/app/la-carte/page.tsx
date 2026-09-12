@@ -63,7 +63,22 @@ export default function MenuPage() {
           </div>
         </section>
 
-        <BuilderSection />
+        {/* Information obligatoire : la réglementation impose d'indiquer au client
+          où trouver le détail des allergènes et l'origine des viandes. */}
+      <section className="pb-4 pt-2">
+        <div className="mx-auto max-w-3xl px-5">
+          <p className="rounded-2xl border border-cream/12 bg-cream-alt/40 p-5 text-sm leading-relaxed text-cream/65">
+            <strong className="text-cream/85">Allergènes et origine des viandes.</strong>{" "}
+            L&apos;information écrite sur les quatorze allergènes à déclaration obligatoire et
+            l&apos;origine des viandes servies sont consultables dans l&apos;établissement.
+            Signalez toute allergie à l&apos;équipe avant de commander. Prix en euros, taxes et
+            service compris&nbsp;; seuls les prix affichés sur place font foi. Détail sur la
+            page <a href="/mentions-legales" className="text-brand underline underline-offset-2">mentions légales</a>.
+          </p>
+        </div>
+      </section>
+
+      <BuilderSection />
         <PosterStrip />
         <CtaSection />
       </>

@@ -504,6 +504,19 @@ export const access = [
  * Chaque « [à compléter] » doit être renseigné par le client AVANT publication.
  */
 export const legalMentions = {
+  /**
+   * Obligations propres à la restauration, en plus des mentions LCEN.
+   * Aucune ne peut être devinée : tant qu'elles ne sont pas fournies, elles
+   * s'affichent en « [à compléter] » et bloquent la publication.
+   */
+  // Où l'information écrite sur les 14 allergènes est consultable sur place
+  // (règlement UE 1169/2011, décret n° 2015-447).
+  allergenesLieu: "[à compléter]",
+  // Pays d'origine des viandes servies (décret n° 2002-1465 pour le bœuf,
+  // décret n° 2022-65 pour le porc, le mouton et la volaille).
+  origineViandes: "[à compléter]",
+  // Licence de débit de boissons, si le restaurant en détient une.
+  licenceBoissons: "",
   companyName: "[à compléter]",
   tradeName: "Crousty Vice",
   legalForm: "[à compléter]",
