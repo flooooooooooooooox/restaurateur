@@ -62,7 +62,7 @@ export default function Hero() {
         </div>
 
         {heroPhoto && (
-          <div className="animate-hero-in relative mx-auto w-full max-w-[340px]" style={{ animationDelay: "0.34s" }}>
+          <div className="animate-hero-in relative mx-auto w-full max-w-[420px]" style={{ animationDelay: "0.34s" }}>
             <div aria-hidden="true" className="absolute -inset-4 rounded-[2.5rem] bg-lemon/30 blur-2xl" />
             {/* Étiquette « polaroid » qui casse le cadre */}
             <span className="price-sticker price-sticker-mint absolute -left-4 -top-4 z-10 text-sm sm:-left-6">
@@ -76,7 +76,7 @@ export default function Hero() {
                 height={heroPhoto.h}
                 priority
                 quality={95}
-                sizes="340px"
+                sizes="(max-width: 1024px) 80vw, 420px"
                 className="w-full object-cover"
               />
             </figure>

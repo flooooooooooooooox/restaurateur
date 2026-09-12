@@ -92,37 +92,22 @@ Ces champs sont en `[à compléter]`, visibles en surbrillance sur `/mentions-le
   (sinon canonicals, sitemap et GEO pointent dans le vide).
 - **Logo** : le logo actuel est un logo texte provisoire (`src/components/Logo.tsx` + `src/app/icon.tsx`).
   À remplacer par le vrai logo Vice City du client.
-- **Photos — 3 en ligne, en basse résolution.** Le client a fourni un montage
-  (`suivi-client/crousty-vice-caen/sources/montage-photos-original.webp`) qui a été découpé
-  automatiquement en 3 fichiers :
-  | Fichier | Découpe source | Fichier livré | Emplacement |
-  |---|---|---|---|
-  | `crousty-main.webp` | 228 × 403 | 456 × 806 | Hero (photo d'accueil) |
-  | `salle-bornes.webp` | 473 × 521 | 946 × 1042 | Galerie |
-  | `frigo-boissons.webp` | 228 × 188 | 456 × 376 | Galerie |
+- **Photos — 4 en ligne, en pleine définition.** Le client a fourni des originaux propres
+  qui remplacent les découpes basse définition du montage initial :
 
-  **Traitement de netteté appliqué** : agrandissement Lanczos ×2, masque flou
-  (rayon 2,2 / 145 %) et léger gain de contraste local, réencodage WebP qualité 95.
-  `next.config.ts` autorise la qualité 95 (Next 16 réencode en 75 par défaut, ce qui
-  adoucissait nettement ces petites images) et les composants la demandent explicitement.
+  | Fichier | Dimensions | Emplacement |
+  |---|---|---|
+  | `crousty-main.webp` | 759 × 1349 | Hero |
+  | `salle.webp` | 1280 × 719 | Galerie, pleine largeur (nouvelle) |
+  | `borne.webp` | 1080 × 1188 | Galerie, portrait |
+  | `boissons.webp` | 1080 × 893 | Galerie |
 
-  ⚠️ Cela **récupère du piqué mais n'invente pas de détail**. Les fichiers d'origine
-  restent très petits pour du web, et l'affichage est borné en conséquence (hero 340 px,
-  galerie en 2 colonnes dans un conteneur `max-w-3xl`). **Demander les originaux au
-  client** (au moins 1600 px de large) : c'est le seul vrai gain de qualité restant.
-  Il suffira de remplacer les fichiers et de corriger `w`/`h` dans `src/lib/site-data.ts`.
+  Converties en WebP qualité 82, entre 62 et 96 Ko pièce. Les bridages d'affichage
+  posés du temps des images en 228 px sont levés : la photo du hero passe de 340 à
+  420 px et la galerie occupe de nouveau toute la largeur.
 
-  Manquent encore : la box de riz en gros plan (le visuel signature), les 2 affiches de la
-  carte (tableau `posters`, prêt), et **le logo en fichier**.
-
-  ⚠️ **Le logo est reconstitué en CSS**, pas importé : `ChromeTitle` / `ScriptTitle`
-  reproduisent sa construction (anneau blanc, liseré magenta, remplissage dégradé, relief)
-  avec les polices Titan One et Pacifico. C'est très proche, mais ce ne sera jamais
-  identique : le vrai logo est un lettrage dessiné à la main, pas une police. **Dès que le
-  client fournit le fichier du logo (PNG à fond transparent ou SVG), l'utiliser tel quel**
-  dans `src/components/Logo.tsx` et dans le hero — c'est la seule façon d'obtenir le
-  rendu exact de la marque. Les 12 URLs de l'ancien site sont dans
-  `images-a-recuperer.txt`.
+  Manquent encore : les **2 affiches** de la carte (tableau `posters`, prêt) et le **logo
+  en fichier** (PNG transparent ou SVG) — voir `public/images/README.md`.
 
 ## 🟡 À faire confirmer par le client
 

@@ -21,7 +21,7 @@ export default function Gallery() {
           intro="Néons roses, bornes de commande et box généreuses : bienvenue chez Crousty Vice."
         />
 
-        <div className="mx-auto mt-14 grid max-w-3xl grid-cols-2 items-start gap-5 sm:gap-7">
+        <div className="mt-14 grid grid-cols-2 items-start gap-5 sm:gap-7">
           {gallery.map((photo, i) => (
             <Reveal
               key={photo.src}
@@ -43,8 +43,8 @@ export default function Gallery() {
                   quality={95}
                   sizes={
                     photo.wide
-                      ? "(max-width: 1024px) 100vw, 640px"
-                      : "(max-width: 640px) 50vw, 320px"
+                      ? "(max-width: 1024px) 100vw, 1100px"
+                      : "(max-width: 640px) 50vw, 550px"
                   }
                   className="w-full object-cover"
                 />

@@ -238,9 +238,9 @@ export type Photo = {
  */
 export const heroPhoto: Photo | null = {
   src: "/images/crousty-main.webp",
-  alt: "Une box Crousty Vice fraîchement préparée, tenue à la main : poulet croustillant, sauce et herbes sur un lit de riz",
-  w: 456,
-  h: 806,
+  alt: "Une box Crousty Vice fraîchement préparée, tenue à la main : poulet croustillant, sauce barbecue, oignons frits et herbes sur un lit de riz",
+  w: 759,
+  h: 1349,
 };
 
 /**
@@ -253,19 +253,28 @@ export const heroPhoto: Photo | null = {
  */
 export const gallery: Photo[] = [
   {
-    src: "/images/salle-bornes.webp",
-    alt: "La salle de Crousty Vice : murs roses, néons et borne de commande tactile",
-    w: 946,
-    h: 1042,
-    tilt: -1.5,
+    src: "/images/salle.webp",
+    alt: "La salle de Crousty Vice : murs roses et bleus, écrans de la carte au-dessus du comptoir, vitrine à boissons et bornes de commande",
+    w: 1280,
+    h: 719,
+    wide: true,
+    tilt: -1,
   },
   {
-    src: "/images/frigo-boissons.webp",
-    alt: "Le réfrigérateur à boissons de Crousty Vice, sodas et jus alignés sous les néons",
-    w: 456,
-    h: 376,
-    tilt: 2,
-    offset: 26,
+    src: "/images/borne.webp",
+    alt: "Une borne de commande tactile Crousty Vice sous les néons roses, avec son terminal de paiement",
+    w: 1080,
+    h: 1188,
+    tall: true,
+    tilt: 1.5,
+    offset: 24,
+  },
+  {
+    src: "/images/boissons.webp",
+    alt: "La vitrine réfrigérée de Crousty Vice, garnie de canettes colorées",
+    w: 1080,
+    h: 893,
+    tilt: -1.5,
   },
 ];
 
