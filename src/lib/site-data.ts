@@ -528,6 +528,21 @@ export const legalMentions = {
   headOffice: "189 Rue Saint-Jean, 14000 Caen",
   insurance: "[à compléter]",
   publicationDirector: "[à compléter]",
-  host: "Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis — vercel.com",
+  /**
+   * Hébergeur du site. La LCEN (art. 6-III) impose le nom, l'ADRESSE et le
+   * TÉLÉPHONE de l'hébergeur réel.
+   *
+   * ⚠️ Le nom est renseigné parce que le site est déployé sur Vercel, mais
+   * l'adresse du siège et le téléphone doivent être VÉRIFIÉS sur le site de
+   * l'hébergeur avant publication : une adresse approximative ne remplit pas
+   * l'obligation. Si l'hébergement change, tout ce bloc change.
+   */
+  host: {
+    name: "Vercel Inc.",
+    address: "[à vérifier sur vercel.com]",
+    phone: "[à vérifier sur vercel.com]",
+    site: "https://vercel.com",
+    country: "États-Unis",
+  },
   consumerMediator: "[à compléter]",
 } as const;

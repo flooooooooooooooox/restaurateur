@@ -49,10 +49,23 @@ export default function LegalPage() {
 
         <section>
           <h2>Hébergement</h2>
-          <p>{legalMentions.host}</p>
+          <dl>
+            <dt>Hébergeur</dt>
+            <dd>{legalMentions.host.name}</dd>
+            <dt>Adresse</dt>
+            <dd><Todo>{legalMentions.host.address}</Todo></dd>
+            <dt>Téléphone</dt>
+            <dd><Todo>{legalMentions.host.phone}</Todo></dd>
+            <dt>Site</dt>
+            <dd>
+              <a href={legalMentions.host.site} target="_blank" rel="noopener noreferrer">
+                {legalMentions.host.site.replace("https://", "")}
+              </a>
+            </dd>
+          </dl>
           <p>
-            Les serveurs qui hébergent ce site peuvent être situés en dehors de l&apos;Union
-            européenne. Voir la{" "}
+            Les serveurs qui hébergent ce site sont situés en dehors de l&apos;Union
+            européenne ({legalMentions.host.country}). Voir la{" "}
             <a href="/politique-de-confidentialite">politique de confidentialité</a> pour le
             détail des transferts de données.
           </p>

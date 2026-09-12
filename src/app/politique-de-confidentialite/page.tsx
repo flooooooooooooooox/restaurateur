@@ -60,7 +60,7 @@ export default function PrivacyPage() {
           <ul>
             <li><strong>Finalité</strong>&nbsp;: assurer le fonctionnement et la sécurité du site.</li>
             <li><strong>Base légale</strong>&nbsp;: intérêt légitime (article 6.1.f du RGPD).</li>
-            <li><strong>Destinataire</strong>&nbsp;: {legalMentions.host}</li>
+            <li><strong>Destinataire</strong>&nbsp;: {legalMentions.host.name}, notre hébergeur ({legalMentions.host.country}).</li>
             <li><strong>Conservation</strong>&nbsp;: selon la politique de l&apos;hébergeur, de l&apos;ordre de quelques semaines.</li>
           </ul>
 

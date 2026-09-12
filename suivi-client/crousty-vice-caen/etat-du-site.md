@@ -112,6 +112,21 @@ d'informations que seul le client peut fournir. Elles s'affichent en surbrillanc
 > consulter. Le site le fait déjà sur la page de la carte et dans les mentions légales, mais
 > le lieu exact doit être renseigné.
 
+### Hébergeur — 2 champs à vérifier
+La LCEN impose le **nom, l'adresse et le téléphone** de l'hébergeur réel. Le nom est
+renseigné (Vercel, où le site est déployé), mais l'adresse et le téléphone venaient de
+l'exemple générique du skill : ils sont passés en `[à vérifier sur vercel.com]`.
+
+| Champ | Clé |
+|---|---|
+| Adresse du siège de l'hébergeur | `legalMentions.host.address` |
+| Téléphone de l'hébergeur | `legalMentions.host.phone` |
+
+> Les relever sur les mentions légales de vercel.com, et non de mémoire : une adresse
+> approximative ne remplit pas l'obligation. **Si l'hébergement change** (OVH, o2switch,
+> Netlify…), tout le bloc `legalMentions.host` change, ainsi que la mention de transfert
+> hors UE dans la politique de confidentialité — un hébergeur français la rend sans objet.
+
 ### Autre bloquant
 - **`siteConfig.url`** : remplacer le domaine provisoire par le vrai, sinon canonical,
   sitemap et données structurées pointent dans le vide.
