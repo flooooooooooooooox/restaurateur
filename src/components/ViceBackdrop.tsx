@@ -6,8 +6,7 @@
 
 /** Minuscules Crousty en suspension (positions fixes, pas de hasard au rendu). */
 const SPECKS = [
-  [6, 12, 1.6], [23, 8, 1.9], [38, 6, 1.4], [54, 11, 1.7],
-  [69, 9, 1.5], [84, 7, 1.8], [43, 35, 1.2], [91, 24, 1.3],
+  [6, 12, 1.6], [31, 8, 1.9], [58, 11, 1.7], [84, 7, 1.8], [43, 33, 1.2],
 ] as const;
 
 
@@ -51,7 +50,7 @@ export default function ViceBackdrop({
       {/* Rayons de soleil : dégradé conique, sans nœud ni calque fusionné */}
       {withSun && (
         <div
-          className="vice-sunburst absolute top-[16%] h-[120rem] w-[120rem] -translate-x-1/2 -translate-y-1/2"
+          className="vice-sunburst absolute top-[16%] h-[64rem] w-[64rem] -translate-x-1/2 -translate-y-1/2"
           style={{ left: `${sunX}%` }}
         />
       )}

@@ -6,9 +6,7 @@ const CROUSTYS = [
   { left: "8%", top: "70%", size: 20, duration: 9, delay: 0 },
   { left: "19%", top: "38%", size: 14, duration: 11, delay: 1.5 },
   { left: "31%", top: "80%", size: 24, duration: 13, delay: 0.8 },
-  { left: "45%", top: "55%", size: 16, duration: 10, delay: 2.2 },
   { left: "58%", top: "33%", size: 22, duration: 14, delay: 1.1 },
-  { left: "70%", top: "72%", size: 15, duration: 9.5, delay: 2.6 },
   { left: "82%", top: "45%", size: 19, duration: 11.5, delay: 0.6 },
   { left: "92%", top: "68%", size: 13, duration: 13, delay: 1.8 },
 ];

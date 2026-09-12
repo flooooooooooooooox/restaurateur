@@ -580,3 +580,20 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .vice-sunburst { animation: none; }
 }
+
+/* ---------- Enchaînement entre les pages ---------- */
+
+/* Apparition courte de la page qui arrive : assez pour marquer le changement,
+   assez brève pour ne pas retarder la lecture. */
+@keyframes page-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+.page-enter {
+  animation: page-in 340ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-enter { animation: none; }
+}

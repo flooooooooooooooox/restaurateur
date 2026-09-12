@@ -1,11 +1,20 @@
 import dynamic from "next/dynamic";
+import LazyMount from "./LazyMount";
 import { access, directionsUrl, mapsUrl, siteConfig } from "@/lib/site-data";
 import { ClockIcon, PhoneIcon, PinIcon } from "./Icons";
 import Reveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
 
+/** Réservé pendant que la carte n'est pas encore chargée, pour éviter le saut. */
+const MapPlaceholder = <div className="h-[320px] w-full animate-pulse bg-navy-light/60" />;
+
+/**
+ * Le repli `loading` est indispensable : sans lui, l'import dynamique suspend
+ * le rendu, et une navigation avec transition de vue reste figée jusqu'à
+ * l'expiration du délai du navigateur, soit quatre secondes.
+ */
 const RestaurantMap = dynamic(() => import("./RestaurantMap"), {
-  loading: () => <div className="h-[320px] w-full animate-pulse bg-navy-light/60" />,
+  loading: () => MapPlaceholder,
 });
 
 export default function LocationSection() {
@@ -21,7 +30,9 @@ export default function LocationSection() {
         <div className="mt-14 grid gap-6 lg:grid-cols-[1.1fr_1fr]">
           <Reveal>
             <div className="card-neon overflow-hidden rounded-3xl">
-              <RestaurantMap />
+              <LazyMount placeholder={MapPlaceholder}>
+                <RestaurantMap />
+              </LazyMount>
               <div className="flex flex-wrap gap-3 p-5">
                 <a href={directionsUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm">
                   <PinIcon size={16} /> Itinéraire

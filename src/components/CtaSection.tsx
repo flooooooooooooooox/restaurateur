@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Particles from "./Particles";
 import { directionsUrl, siteConfig } from "@/lib/site-data";
 import { ArrowIcon, PhoneIcon, PinIcon } from "./Icons";
 import OrderButton from "./OrderButton";
@@ -10,7 +9,6 @@ export default function CtaSection() {
       <div className="mx-auto max-w-6xl px-5">
         <div className="relative overflow-hidden rounded-[2rem] border border-brand/30 bg-gradient-to-br from-navy-light via-navy to-navy px-6 py-16 text-center sm:px-12">
           <div aria-hidden="true" className="animate-drift-a pointer-events-none absolute -left-20 -top-24 h-72 w-72 rounded-full bg-brand/30 blur-2xl" />
-          <Particles />
 
           <p className="relative text-xs font-bold uppercase tracking-[0.28em] text-cyan animate-scan">
             Ouvert {siteConfig.hours.short}

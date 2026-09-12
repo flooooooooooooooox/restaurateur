@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import PageTransition from "@/components/PageTransition";
 import Hero from "@/components/Hero";
 import ProcessSection from "@/components/ProcessSection";
 import BenefitsSection from "@/components/BenefitsSection";
@@ -18,36 +19,38 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <>
-      <JsonLd data={getFaqSchema()} />
-      <Hero />
+    <PageTransition>
+      <>
+        <JsonLd data={getFaqSchema()} />
+        <Hero />
 
-      {/* Bandeau de réassurance */}
-      <section aria-label="En bref" className="border-y border-cream/10 bg-cream-alt/40">
-        <dl className="mx-auto grid max-w-6xl grid-cols-2 divide-cream/10 px-5 sm:grid-cols-4 sm:divide-x">
-          {[
-            { label: "Ouvert", value: "7j/7" },
-            { label: "Service", value: "11h – 00h" },
-            { label: "Crousty dès", value: siteConfig.priceFrom },
-            { label: "Sauces signature", value: "7" },
-          ].map((stat) => (
-            <div key={stat.label} className="px-2 py-7 text-center">
-              <dt className="text-[11px] font-bold uppercase tracking-[0.2em] text-cream/45">{stat.label}</dt>
-              <dd className="mt-1.5 font-display text-2xl font-extrabold text-cream">{stat.value}</dd>
-            </div>
-          ))}
-        </dl>
-      </section>
+        {/* Bandeau de réassurance */}
+        <section aria-label="En bref" className="border-y border-cream/10 bg-cream-alt/40">
+          <dl className="mx-auto grid max-w-6xl grid-cols-2 divide-cream/10 px-5 sm:grid-cols-4 sm:divide-x">
+            {[
+              { label: "Ouvert", value: "7j/7" },
+              { label: "Service", value: "11h – 00h" },
+              { label: "Crousty dès", value: siteConfig.priceFrom },
+              { label: "Sauces signature", value: "7" },
+            ].map((stat) => (
+              <div key={stat.label} className="px-2 py-7 text-center">
+                <dt className="text-[11px] font-bold uppercase tracking-[0.2em] text-cream/45">{stat.label}</dt>
+                <dd className="mt-1.5 font-display text-2xl font-extrabold text-cream">{stat.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
 
-      <ProcessSection />
-      <BuilderTeaser />
+        <ProcessSection />
+        <BuilderTeaser />
 
-      <Gallery />
-      <BenefitsSection />
-      <TestimonialsSection />
-      <LocationSection />
-      <FaqSection />
-      <CtaSection />
-    </>
+        <Gallery />
+        <BenefitsSection />
+        <TestimonialsSection />
+        <LocationSection />
+        <FaqSection />
+        <CtaSection />
+      </>
+    </PageTransition>
   );
 }

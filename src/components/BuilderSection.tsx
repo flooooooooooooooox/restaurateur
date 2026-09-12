@@ -1,4 +1,19 @@
-import CroustyBuilder from "./CroustyBuilder";
+import dynamic from "next/dynamic";
+
+/**
+ * Le configurateur est le plus gros composant client du site. Importé
+ * normalement, il suspend le rendu le temps que son morceau de code arrive,
+ * et une navigation avec transition de vue reste figée jusqu'à l'expiration
+ * du délai du navigateur. Le repli `loading` évite cette suspension.
+ */
+const CroustyBuilder = dynamic(() => import("./CroustyBuilder"), {
+  loading: () => (
+    <div className="grid gap-6 lg:grid-cols-[1.55fr_1fr] lg:items-start">
+      <div className="card-sticker panel-lemon h-[32rem] animate-pulse" />
+      <div className="card-sticker panel-hot h-64 animate-pulse" />
+    </div>
+  ),
+});
 import Skyline from "./Skyline";
 
 export default function BuilderSection() {

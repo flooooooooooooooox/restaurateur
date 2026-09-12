@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MobileCtaBar from "@/components/MobileCtaBar";
+import BackButton from "@/components/BackButton";
 import JsonLd from "@/components/JsonLd";
 import { siteConfig } from "@/lib/site-data";
 import { getRestaurantSchema, getWebSiteSchema } from "@/lib/structured-data";
@@ -11,7 +12,7 @@ import { getRestaurantSchema, getWebSiteSchema } from "@/lib/structured-data";
 const display = Outfit({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["600", "700", "800", "900"],
+  weight: ["700", "800"],
   display: "swap",
 });
 
@@ -93,6 +94,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main id="contenu">{children}</main>
         <Footer />
         <MobileCtaBar />
+        <BackButton />
       </body>
     </html>
   );

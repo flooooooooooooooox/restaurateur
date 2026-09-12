@@ -160,6 +160,9 @@ Mesuré au défilement sur la page d'accueil, en 1440 px :
 | Temps par image (médiane) | 27 ms (≈ 37 i/s) | **16,6 ms (60 i/s)** |
 | Pic le plus lent (p95) | 45 ms | 19 ms |
 | Éléments flous animés | 6 | 3 |
+| Éléments animés en continu | 78 | 31 |
+| JavaScript au chargement | 205 Ko | 164 Ko |
+| Navigation entre pages | 4 100 ms (1re) | **< 120 ms** |
 
 Ce qui coûtait cher, et ce qui a été fait :
 - **La skyline en SVG inline** créait près de 360 nœuds par instance (les fenêtres
@@ -173,6 +176,20 @@ Ce qui coûtait cher, et ce qui a été fait :
 - **`background-attachment: fixed`** sur le `body` forçait un repaint du fond à chaque
   défilement : supprimé.
 - **Halos flous** réduits de 6 à 3, et rayon ramené de 64 px à 40 px.
+- **La carte Leaflet** ne se charge plus qu'à l'approche de l'écran (`LazyMount`) : sa
+  bibliothèque et sa feuille de style pesaient sur le chargement initial alors qu'elle est
+  tout en bas de page.
+- Le **configurateur** et la **carte** sont importés avec un repli `loading`. Sans lui, ils
+  suspendent le rendu et bloquent toute animation de navigation.
+- Décor allégé : soleil ramené de 120 à 64 rem, Crousty flottants réduits et retirés du bloc
+  d'appel final.
+
+> ⚠️ **L'API View Transitions du navigateur a été essayée puis écartée.** Elle doit
+> photographier l'ancienne page en entier avant d'animer ; sur l'accueil — près de 8 000 px
+> avec dégradés, flous et calques translucides — la capture dépassait le délai du navigateur.
+> Mesure : **4 100 ms et transition abandonnée**, contre 90 ms sans elle. L'enchaînement se
+> fait donc par une simple animation d'arrivée en CSS (`PageTransition`), qui ne bloque rien
+> et fonctionne dans tous les navigateurs. Ne pas la réintroduire sans remesurer.
 
 > ⚠️ Si la skyline est modifiée, regénérer le SVG avec `node scripts/gen-skyline.mjs`.
 
