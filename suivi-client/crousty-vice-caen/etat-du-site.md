@@ -36,7 +36,16 @@ Politique de confidentialité, 404 personnalisée.
 - FAQ (6 questions géolocalisées)
 - Barre d'action fixe mobile : Appeler · Itinéraire · Carte
 
-**Contact** : téléphone seul, click-to-call partout. Pas de formulaire, donc
+**Commande en ligne** : lien Uber Eats présent dans l'en-tête, le hero, la page contact,
+l'appel final, le pied de page et la barre mobile — 5 points d'entrée sur l'accueil.
+Déclaré aussi en JSON-LD (`OrderAction` + `hasDeliveryMethod`) et dans `/llms.txt`, pour que
+la livraison soit trouvable par Google et par les moteurs de réponse.
+
+> ⚠️ Le message du restaurant évoque un **code de parrainage** pour la première commande,
+> mais le code n'a pas été communiqué. `uberEatsCode` reste vide et **rien n'est affiché
+> à ce sujet** : le code est à fournir pour être mis en avant.
+
+**Contact** : téléphone, click-to-call partout. Pas de formulaire, donc
 **aucune clé API à gérer** et aucune donnée personnelle collectée.
 
 **Prix** : repris des **affiches en restaurant** (plus récentes et plus complètes que

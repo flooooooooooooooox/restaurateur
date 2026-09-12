@@ -43,7 +43,7 @@ export default function ConceptPage() {
               </p>
               <p>
                 Une expérience rapide, généreuse et incroyablement savoureuse, servie {siteConfig.hours.short},
-                sur place comme à emporter.
+                sur place, à emporter ou en livraison à Caen.
               </p>
             </div>
             <Reveal>

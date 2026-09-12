@@ -2,6 +2,7 @@ import Link from "next/link";
 import Particles from "./Particles";
 import { directionsUrl, siteConfig } from "@/lib/site-data";
 import { ArrowIcon, PhoneIcon, PinIcon } from "./Icons";
+import OrderButton from "./OrderButton";
 
 export default function CtaSection() {
   return (
@@ -18,11 +19,12 @@ export default function CtaSection() {
             Votre <span className="neon-pink">Crousty</span> vous attend au {siteConfig.street}
           </h2>
           <p className="relative mx-auto mt-4 max-w-lg text-sm leading-relaxed text-cream/65">
-            Sur place dans l&apos;ambiance néon, ou à emporter en quelques minutes. Dès {siteConfig.priceFrom}.
+            Sur place dans l&apos;ambiance néon, à emporter en quelques minutes, ou livré chez vous. Dès {siteConfig.priceFrom}.
           </p>
 
           <div className="relative mt-8 flex flex-wrap justify-center gap-3">
-            <a href={siteConfig.phoneHref} className="btn btn-primary" data-cta="cta-phone">
+            <OrderButton source="cta" />
+            <a href={siteConfig.phoneHref} className="btn btn-ghost" data-cta="cta-phone">
               <PhoneIcon size={17} /> {siteConfig.phone}
             </a>
             <a href={directionsUrl} target="_blank" rel="noopener noreferrer" className="btn btn-ghost">

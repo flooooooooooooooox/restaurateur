@@ -6,6 +6,7 @@ import { heroPhoto, siteConfig } from "@/lib/site-data";
 import { ArrowIcon, ClockIcon, PhoneIcon, PinIcon } from "./Icons";
 import GoogleRating from "./GoogleRating";
 import MapsLink from "./MapsLink";
+import OrderButton from "./OrderButton";
 
 export default function Hero() {
   return (
@@ -35,12 +36,10 @@ export default function Hero() {
         </p>
 
         <div className="animate-hero-in mt-9 flex flex-wrap gap-3" style={{ animationDelay: "0.4s" }}>
-          <Link href="/la-carte#composer" className="btn btn-primary" data-cta="hero-builder">
+          <OrderButton source="hero" />
+          <Link href="/la-carte#composer" className="btn btn-ghost" data-cta="hero-builder">
             Composer mon Crousty <ArrowIcon size={17} />
           </Link>
-          <a href={siteConfig.phoneHref} className="btn btn-ghost" data-cta="hero-phone">
-            <PhoneIcon size={17} /> {siteConfig.phone}
-          </a>
         </div>
 
         <div className="animate-hero-in mt-7" style={{ animationDelay: "0.46s" }}>
@@ -51,12 +50,17 @@ export default function Hero() {
           <li className="flex items-center gap-2">
             <ClockIcon size={17} className="text-lemon" /> Ouvert {siteConfig.hours.short}
           </li>
+          <li>
+            <a href={siteConfig.phoneHref} className="flex items-center gap-2 transition-colors hover:text-lemon" data-cta="hero-phone">
+              <PhoneIcon size={17} className="text-lemon" /> {siteConfig.phone}
+            </a>
+          </li>
           <li className="flex items-center gap-2">
             <PinIcon size={17} className="text-lemon" /> Centre-ville, rue piétonne
           </li>
           <li className="flex items-center gap-2">
             <span aria-hidden="true" className="grid h-[17px] w-[17px] place-items-center rounded-full bg-lemon text-[10px] font-black text-ink">€</span>
-            Dès {siteConfig.priceFrom} · sur place ou à emporter
+            Dès {siteConfig.priceFrom} · sur place, à emporter ou livré
           </li>
         </ul>
         </div>

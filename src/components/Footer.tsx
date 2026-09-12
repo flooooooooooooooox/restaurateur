@@ -29,6 +29,17 @@ export default function Footer() {
         <nav aria-label="Pages du site">
           <h2 className="font-display text-sm font-bold uppercase tracking-widest text-brand">Le site</h2>
           <ul className="mt-4 space-y-2.5 text-sm text-cream/60">
+            <li>
+              <a
+                href={siteConfig.uberEatsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cta="order-footer"
+                className="font-semibold text-brand transition-colors hover:text-cream"
+              >
+                Commander en ligne
+              </a>
+            </li>
             <li><Link href="/" className="transition-colors hover:text-cream">Accueil</Link></li>
             <li><Link href="/la-carte" className="transition-colors hover:text-cream">La carte</Link></li>
             <li><Link href="/le-concept" className="transition-colors hover:text-cream">Le concept</Link></li>

@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { siteConfig } from "@/lib/site-data";
 import { PhoneIcon } from "./Icons";
 import Logo from "./Logo";
+import OrderButton from "./OrderButton";
 
 const NAV = [
   { href: "/", label: "Accueil" },
@@ -57,15 +58,17 @@ export default function Header() {
           })}
         </nav>
 
-        <a
-          href={siteConfig.phoneHref}
-          className="btn btn-primary btn-sm ml-auto md:ml-2"
-          data-cta="header-phone"
-        >
-          <PhoneIcon size={16} />
-          <span className="hidden sm:inline">{siteConfig.phone}</span>
-          <span className="sm:hidden">Appeler</span>
-        </a>
+        <div className="ml-auto flex items-center gap-2 md:ml-2">
+          <a
+            href={siteConfig.phoneHref}
+            className="btn btn-outline btn-sm hidden sm:inline-flex"
+            data-cta="header-phone"
+          >
+            <PhoneIcon size={16} />
+            {siteConfig.phone}
+          </a>
+          <OrderButton className="btn btn-primary btn-sm" label="Commander" size={16} source="header" />
+        </div>
 
         <button
           type="button"

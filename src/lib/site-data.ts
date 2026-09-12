@@ -55,6 +55,15 @@ export const siteConfig = {
   foundingYear: "[à compléter]",
 
   tiktokUrl: "https://www.tiktok.com/@croustyvicecaen14000",
+
+  /**
+   * Commande en ligne. Le message du restaurant mentionne un code de parrainage
+   * pour la première commande, mais ce code n'a pas été communiqué :
+   * `uberEatsCode` reste vide et rien n'est affiché à son sujet.
+   */
+  uberEatsUrl:
+    "https://www.ubereats.com/store-browse-uuid/1966c319-dabe-4723-89a7-74a81cd9258e?diningMode=DELIVERY",
+  uberEatsCode: "",
   instagramUrl: "",
   facebookUrl: "",
   /** Fiche Google du restaurant. ⚠️ Renseigner le lien exact avant publication. */
@@ -460,12 +469,17 @@ export const faq = [
   {
     question: "Où manger un plat de riz à composer près de Caen ?",
     answer:
-      "Crousty Vice, au 189 rue Saint-Jean à Caen, propose des box de riz personnalisables sur place et à emporter, 7j/7 de 11h à minuit. Le restaurant rayonne sur Caen et son agglomération : Hérouville-Saint-Clair, Mondeville, Ifs, Fleury-sur-Orne, Colombelles ou encore Giberville.",
+      "Crousty Vice, au 189 rue Saint-Jean à Caen, propose des box de riz personnalisables sur place, à emporter et en livraison via Uber Eats, 7j/7 de 11h à minuit. Le restaurant rayonne sur Caen et son agglomération : Hérouville-Saint-Clair, Mondeville, Ifs, Fleury-sur-Orne, Colombelles ou encore Giberville.",
   },
   {
-    question: "Peut-on manger sur place ou uniquement à emporter ?",
+    question: "Peut-on manger sur place, emporter ou se faire livrer ?",
     answer:
-      "Les deux sont possibles : la salle est ouverte pour manger sur place dans l'ambiance néon années 80 du restaurant, et toutes les box peuvent être préparées à emporter.",
+      "Les trois sont possibles : la salle est ouverte pour manger sur place dans l'ambiance néon années 80 du restaurant, toutes les box peuvent être préparées à emporter, et Crousty Vice livre à Caen via Uber Eats.",
+  },
+  {
+    question: "Crousty Vice livre-t-il à domicile à Caen ?",
+    answer:
+      "Oui, Crousty Vice est disponible en livraison à Caen sur Uber Eats. La commande se fait directement depuis la page du restaurant sur la plateforme, aux mêmes horaires que le service, de 11h à minuit 7 jours sur 7.",
   },
 ] as const;
 

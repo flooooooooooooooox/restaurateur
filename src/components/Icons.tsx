@@ -95,3 +95,12 @@ export function TikTokIcon({ className, size = 20 }: Props) {
     </svg>
   );
 }
+
+export function BagIcon({ className, size = 20 }: Props) {
+  return (
+    <svg {...base(size)} className={className}>
+      <path d="M5 8h14l-1.2 12.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8L5 8z" />
+      <path d="M9 8V6a3 3 0 0 1 6 0v2" />
+    </svg>
+  );
+}
