@@ -35,7 +35,11 @@ const palm = (x,s,flip) => {
   const g = [`<path d="M-5 200Q0 140 9 92L19 94Q7 142 5 200Z" fill="${INK}"/>`];
   [100,114,128,142,156,170].forEach((ty,i)=>g.push(`<rect x="${-3+i*.9}" y="${ty}" width="${13-i*.5}" height="2" rx="1" fill="${DARK}"/>`));
   g.push(`<g transform="translate(13 92)" fill="${INK}"><path d="M0 0Q-30-14-56-4Q-40-24-6-10Z"/><path d="M0 0Q-22-28-40-38Q-14-36-2-10Z"/><path d="M0 0Q2-32-6-54Q14-36 8-8Z"/><path d="M0 0Q24-28 44-38Q18-36 4-10Z"/><path d="M0 0Q32-13 58-2Q40-24 6-10Z"/><g stroke="${DARK}" stroke-width="1.4" fill="none" opacity=".9"><path d="M0 0Q-28-12-52-4"/><path d="M0 0Q-20-26-36-36"/><path d="M0 0Q0-30-4-50"/><path d="M0 0Q22-26 40-36"/><path d="M0 0Q30-12 54-3"/></g><circle cx="-4" cy="5" r="4" fill="${DARK}"/><circle cx="5" cy="7" r="3.4" fill="${DARK}"/></g>`);
-  out.push(`<g transform="translate(${x} 0) scale(${flip?-s:s} ${s})">${g.join('')}</g>`); };
+  // La mise à l'échelle part de l'origine : la base du palmier, tracée au sol
+  // (y=200), remonterait à 200×échelle et le palmier flotterait. On compense en
+  // décalant de 200×(1-échelle) pour que le pied reste posé au sol.
+  const dy = 200 * (1 - s);
+  out.push(`<g transform="translate(${x} ${dy.toFixed(2)}) scale(${flip?-s:s} ${s})">${g.join('')}</g>`); };
 
 out.push('<g opacity=".45">');
 neon(90,112,70,2); step(300,98,58,5); neon(620,118,82,8,W); step(905,104,64,3); neon(1090,120,76,6);
