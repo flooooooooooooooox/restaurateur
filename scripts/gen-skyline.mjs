@@ -43,7 +43,10 @@ out.push('</g>');
 deco(40,58,46,1); neon(150,104,74,4); step(236,80,52,7); deco(360,46,40,9); neon(412,110,88,2,W);
 step(512,72,56,6); neon(660,96,68,1); deco(742,54,44,5); step(800,106,62,8); neon(874,88,54,3,W);
 deco(962,64,42,7); step(1018,100,60,4); neon(1092,82,70,9);
-palm(300,.92,false); palm(596,1.06,true); palm(930,.86,false); palm(1178,1,true);
+// ⚠️ La skyline est répétée horizontalement : aucune forme ne doit franchir
+// x=0 ni x=1200, sinon elle est tranchée à chaque raccord. Un palmier fait
+// environ ±58 unités de large (× son échelle) autour de son ancrage.
+palm(300,.92,false); palm(596,1.06,true); palm(930,.86,false); palm(1126,1,true);
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="xMidYMax slice">${out.join('')}</svg>`;
 writeFileSync('public/images/skyline.svg', svg);

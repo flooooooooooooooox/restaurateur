@@ -4,8 +4,8 @@
  * panneaux roses, sous la skyline.
  */
 
-/** Étoiles fixes (positions déterministes, pas de rendu aléatoire). */
-const STARS = [
+/** Minuscules Crousty en suspension (positions fixes, pas de hasard au rendu). */
+const SPECKS = [
   [6, 12, 1.6], [23, 8, 1.9], [38, 6, 1.4], [54, 11, 1.7],
   [69, 9, 1.5], [84, 7, 1.8], [43, 35, 1.2], [91, 24, 1.3],
 ] as const;
@@ -24,21 +24,27 @@ export default function ViceBackdrop({
       {/* Ciel : nuit violette en haut, coucher de soleil en bas */}
       <div className="absolute inset-0 bg-[linear-gradient(to_bottom,#2b0a4a_0%,#7b1a7a_32%,#d81e8c_58%,#ff4d7d_78%,#ff8a3d_100%)]" />
 
-      {/* Étoiles, dans la moitié haute */}
+      {/* Minuscules Crousty, dans la moitié haute */}
       <div className="absolute inset-x-0 top-0 h-1/2">
-        {STARS.map(([left, top, size], i) => (
-          <span
+        {SPECKS.map(([left, top, size], i) => (
+          <svg
             key={i}
-            className="animate-twinkle absolute rounded-full bg-white"
+            viewBox="0 0 24 24"
+            className="animate-twinkle absolute text-white"
             style={{
               left: `${left}%`,
               top: `${top}%`,
-              width: size,
-              height: size,
+              width: size * 7,
+              height: size * 7,
               animationDelay: `${(i % 7) * 0.45}s`,
-              opacity: 0.85,
+              opacity: 0.7,
             }}
-          />
+          >
+            <path
+              fill="currentColor"
+              d="M3 11h18a9 9 0 0 1-18 0zm5-3.2c0-1.2.9-1.7.9-2.8 0-.5-.2-.9-.5-1.3.9.3 1.5 1 1.5 1.9 0 1.2-.9 1.6-.9 2.6 0 .3.1.6.2.8-.7-.2-1.2-.6-1.2-1.2zm4-.6c0-1.4 1-1.9 1-3.1 0-.5-.2-1-.5-1.4 1 .3 1.7 1.1 1.7 2.1 0 1.3-1 1.8-1 2.9 0 .3.1.6.2.9-.8-.2-1.4-.7-1.4-1.4zm4 .6c0-1 .8-1.4.8-2.3 0-.4-.2-.8-.4-1.1.8.3 1.3.9 1.3 1.7 0 1-.8 1.4-.8 2.2 0 .3.1.5.2.7-.6-.2-1.1-.6-1.1-1.2z"
+            />
+          </svg>
         ))}
       </div>
 
