@@ -1,4 +1,4 @@
-import { testimonials } from "@/lib/site-data";
+import { siteConfig, testimonials } from "@/lib/site-data";
 import ReviewsCarousel from "./ReviewsCarousel";
 import GoogleRating from "./GoogleRating";
 import Skyline from "./Skyline";
@@ -25,6 +25,15 @@ export default function TestimonialsSection() {
             Avis publiés sur la fiche Google du restaurant. Les trois derniers proviennent
             de son précédent site.
           </p>
+          <a
+            href={siteConfig.googleReviewsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-cta="all-reviews"
+            className="btn btn-ghost btn-sm mt-5"
+          >
+            Voir les {siteConfig.googleReviewCount} avis sur Google
+          </a>
         </div>
 
         <div className="mt-12">

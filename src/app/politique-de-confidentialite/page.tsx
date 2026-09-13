@@ -93,7 +93,13 @@ export default function PrivacyPage() {
           <ul>
             <li><strong>Finalité</strong>&nbsp;: rendre compte de l&apos;expérience de la clientèle.</li>
             <li><strong>Base légale</strong>&nbsp;: intérêt légitime (article 6.1.f du RGPD), les avis étant déjà publics et reproduits sans modification.</li>
-            <li><strong>Source</strong>&nbsp;: fiche Google publique de l&apos;établissement.</li>
+            <li>
+              <strong>Source</strong>&nbsp;:{" "}
+              <a href={siteConfig.googleReviewsUrl} target="_blank" rel="noopener noreferrer">
+                fiche Google publique de l&apos;établissement
+              </a>
+              .
+            </li>
           </ul>
           <p>
             Tout auteur d&apos;un avis reproduit ici peut demander son retrait, à tout moment et

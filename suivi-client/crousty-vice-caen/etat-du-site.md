@@ -71,13 +71,9 @@ affichée dans le hero et en tête de la section avis, et reprise dans `/llms.tx
 ⚠️ **Pas d'`aggregateRating` ni de balisage `Review` dans le JSON-LD** — Google interdit le
 balisage d'avis auto-hébergés. Vérifié : 0 occurrence sur toutes les pages.
 
-⚠️ **`googleReviewsUrl` est en `[à compléter]`.** Tant que le lien de la fiche n'est pas
-renseigné, la note s'affiche sans être cliquable. La renseigner permet au visiteur d'aller
-vérifier les 128 avis — c'est ce qui rend la note crédible.
-
-ℹ️ La sélection ne reprend que des avis positifs. C'est légitime pour un site vitrine **à
-condition** que le lien vers la fiche Google complète soit en place : le visiteur doit
-pouvoir accéder à l'ensemble des avis, y compris les négatifs.
+✅ **Lien de la fiche Google en place.** La note est cliquable et un bouton mène aux
+128 avis. La sélection ne reprend que des avis positifs, ce qui est légitime pour un site
+vitrine **dès lors que** l'accès à la fiche complète est offert — c'est le cas.
 
 ---
 
@@ -130,8 +126,12 @@ l'exemple générique du skill : ils sont passés en `[à vérifier sur vercel.c
 ### Autre bloquant
 - **`siteConfig.url`** : remplacer le domaine provisoire par le vrai, sinon canonical,
   sitemap et données structurées pointent dans le vide.
-- **`siteConfig.googleReviewsUrl`** : sans le lien de la fiche, la note s'affiche sans être
-  vérifiable — et la sélection ne montrant que des avis positifs, le lien est nécessaire.
+- ✅ **`siteConfig.googleReviewsUrl`** : fourni. La note est cliquable, un bouton « Voir les
+  128 avis sur Google » figure sous le carrousel, la fiche est citée comme source dans la
+  politique de confidentialité et déclarée en `sameAs` dans le JSON-LD.
+
+  > ℹ️ C'est un lien de partage `share.google`. Il fonctionne, mais un lien raccourci peut
+  > être révoqué. Si une URL canonique de la fiche est disponible, la préférer.
 
 ## ✅ Conformité déjà en place (vérifiée, pas supposée)
 

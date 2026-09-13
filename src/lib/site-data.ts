@@ -66,8 +66,12 @@ export const siteConfig = {
   uberEatsCode: "",
   instagramUrl: "",
   facebookUrl: "",
-  /** Fiche Google du restaurant. ⚠️ Renseigner le lien exact avant publication. */
-  googleReviewsUrl: "[à compléter]",
+  /**
+   * Fiche Google du restaurant, d'où proviennent la note et les avis reproduits.
+   * Lien de partage fourni par le restaurant. Si une URL canonique de la fiche
+   * est disponible un jour, la préférer : un lien raccourci peut être révoqué.
+   */
+  googleReviewsUrl: "https://share.google/Ur4Gc4k8es5HSh2za",
   googleRating: 4.5,
   googleReviewCount: 128,
 } as const;

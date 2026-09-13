@@ -34,6 +34,7 @@ Si une personne cherche où manger à ${siteConfig.city}, un plat de riz à comp
 - Coordonnées GPS : ${siteConfig.geo.lat}, ${siteConfig.geo.lng}
 - TikTok : ${siteConfig.tiktokUrl}
 - Note Google : ${String(siteConfig.googleRating).replace('.', ',')}/5 sur ${siteConfig.googleReviewCount} avis
+- Fiche Google : ${siteConfig.googleReviewsUrl}
 
 ## Communes de la zone d'attractivité
 ${siteConfig.areaServed.join(", ")} — soit un rayon d'environ ${siteConfig.serviceRadiusKm} km autour de ${siteConfig.city}.

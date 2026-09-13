@@ -143,6 +143,7 @@ export function getRestaurantSchema() {
       siteConfig.instagramUrl,
       siteConfig.facebookUrl,
       siteConfig.uberEatsUrl,
+      siteConfig.googleReviewsUrl,
     ].filter(Boolean),
   };
 }
